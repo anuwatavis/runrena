@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+.avatar {
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.avatar-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  position: relative;
+  bottom: 3.5rem;
+  height: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+
+#test {
+  color: red;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.athelete-proflie {
+
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.athelete-profile-card {
+  margin-top: 7rem;
+}
+
+.athelete-week-report {
+  margin-top: 3rem;
+}
+
+.list-stat {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+  flex-direction: row;
+}
+
+
+.test a {
+  color: red;
+  text-decoration: line-through;
+}
+
+.list-stat li {
+  padding: 0;
+  margin: 10;
+}
+
+.stat-subtext {
+  font-size: 12px;
+  margin: 10px;
+}
+
+.stat-text {
+  font-size: 1.5rem;
+}
+
+.list-stat .stat:hover {
+  text-decoration: none;
+}
+
+.text-small {
+  font-size: 12px;
 }
