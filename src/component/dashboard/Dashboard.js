@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import AtheleteProfile from "./AtheleteProfile";
 import WeekReport from "./WeekReport";
+import ActivitiesDetails from "../Activities/ActivitiesDetails";
 class Dashboard extends Component {
   render() {
     return (
@@ -12,7 +13,7 @@ class Dashboard extends Component {
               <WeekReport />
             </div>
             <div class="col-6">
-              <AtheleteProfile />
+              <ActivitiesDetails />
               <WeekReport />
             </div>
             <div class="col">
