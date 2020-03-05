@@ -1,55 +1,32 @@
 import React from "react";
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from "reactstrap";
+import { Card, CardFooter, CardBody, CardTitle, CardText, CardLink, CardSubtitle } from "reactstrap";
 import { Link } from "react-router-dom";
-import Avatar from "react-avatar";
 const Information = () => {
   return (
     <div>
-      <Card className="athelete-profile-card">
-        <Link to="/anuwat">
-          <div className="avatar-flex">
-            <Avatar
-              name="Anu Wat"
-              size="100"
-              round={true}
-              src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
-            />
-          </div>
-        </Link>
-
-        <CardBody className="text-center">
+      <Card className="mt-5">
+        <CardBody>
           <CardTitle>
-            <h4>Anu Wat</h4>
+            <p>Running Event</p>
           </CardTitle>
-          <CardText>
-            <ul className="list-stat text-center">
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Following</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Follower</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Activities</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-            </ul>
-          </CardText>
+          <CardSubtitle>
+            <p className="font-weight-bold ">Run to the World 2020</p>
+          </CardSubtitle>
         </CardBody>
-        <CardFooter>
-          <div className="card-section">
-            <div className="text-label text-small">Latest Activity</div>
-            <div className="text-small">Afternoon Run • March 1, 2020</div>
-          </div>
-        </CardFooter>
+        <img
+          width="100%"
+          src="https://storage.googleapis.com/s.race.thai.run/events/5e19521142f3fcf4780ead1a/media/bbb0df21-4985-4693-8d8e-459219241c0a.jpg"
+          alt="Card image cap"
+        />
+        <CardBody>
+          <CardText>
+            #THAIRUN #Thai Life Insurance and #SUUNTO invite you to run Run To The World 2020 (a virtual run 10km run)
+            program that makes you part of a world-class marathon.
+          </CardText>
+          <CardLink href="#">Join</CardLink>
+          <CardLink href="#">Description</CardLink>
+        </CardBody>
+        <CardFooter className="text-center">runrena 2020</CardFooter>
       </Card>
     </div>
   );

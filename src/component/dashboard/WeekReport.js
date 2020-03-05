@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from "reactstrap";
+import { Card, CardFooter, CardBody, CardTitle } from "reactstrap";
 import { Bar } from "react-chartjs-2";
 const data = {
   labels: ["Monday", "February", "March", "April", "May", "June", "July"],

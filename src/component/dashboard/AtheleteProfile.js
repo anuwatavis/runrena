@@ -1,48 +1,56 @@
 import React from "react";
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from "reactstrap";
+import { Card, CardFooter, CardBody, CardTitle, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
+
 const AtheleteProfile = () => {
   return (
     <div>
       <Card className="athelete-profile-card">
-        <Link to="/anuwat">
-          <div className="avatar-flex">
-            <Avatar
-              name="Anu Wat"
-              size="100"
-              round={true}
-              src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
-            />
-          </div>
-        </Link>
-
+        <Row>
+          <Col md="12">
+            <Link to="/anuwat">
+              <div className="avatar-flex">
+                <Avatar
+                  name="Anu Wat"
+                  size="100"
+                  round={true}
+                  src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
+                />
+              </div>
+            </Link>
+          </Col>
+        </Row>
         <CardBody className="text-center">
-          <CardTitle>
-            <h4>Anu Wat</h4>
-          </CardTitle>
-          <CardText>
-            <ul className="list-stat text-center">
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Following</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Follower</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-              <li>
-                <a href="#" className="stat">
-                  <div className="stat-subtext">Activities</div>
-                  <h2 className="stat-text">1</h2>
-                </a>
-              </li>
-            </ul>
-          </CardText>
+          <Row>
+            <Col md="12">
+              <CardTitle>
+                <h4>Anu Wat</h4>
+              </CardTitle>
+            </Col>
+            <Col md="12">
+              <Row>
+                <Col md="4">
+                  <div className="text-small">Following</div>
+                  <div className="stat-profile">
+                    <a href="/">1</a>
+                  </div>
+                </Col>
+                <Col md="4">
+                  <div className="text-small">Follower</div>
+                  <div className="stat-profile">
+                    <a href="/">100</a>
+                  </div>
+                </Col>
+                <Col md="4">
+                  <div className="text-small">Activities</div>
+                  <div className="stat-profile">
+                    <a href="/">2000</a>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
         </CardBody>
         <CardFooter>
           <div className="card-section">

@@ -10,14 +10,7 @@
   bottom: 3.5rem;
   height: 2rem;
 }
-
-
-#test {
-  color: red;
-}
-
 .athelete-proflie {
-
   position: relative;
   margin-bottom: 2rem;
 }
@@ -30,23 +23,12 @@
   margin-top: 3rem;
 }
 
-.list-stat {
-  display: flex;
-  list-style: none;
-  justify-content: center;
-  padding: 0;
-  flex-direction: row;
+.stat-profile {
+  color: #b33939;
 }
-
-
-.test a {
-  color: red;
-  text-decoration: line-through;
-}
-
-.list-stat li {
-  padding: 0;
-  margin: 10;
+.stat-profile a:hover {
+  text-decoration: none;
+  color: #b33939;
 }
 
 .stat-subtext {
@@ -63,13 +45,13 @@
 }
 
 .text-small {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .signin-page {
   padding-top: 5rem;
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+  background: url("https://images.unsplash.com/photo-1461897104016-0b3b00cc81ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -82,4 +64,36 @@
   background-color: #333;
   color: aliceblue;
   z-index: 5;
+}
+
+.media-body {
+  margin-left: 1rem;
+}
+
+/* ProjectDetile Component*/
+
+#test {
+  background-color: #b33939;
+  color: aliceblue;
+}
+.upload-activity {
+  background-color: #ecf0f1;
+}
+
+.activity {
+  margin-bottom: 1.5rem;
+}
+.owner {
+  font-weight: bold;
+}
+
+.timestamp {
+  font-size: 0.9rem;
+}
+
+.stat-list {
+  border-right: 1px solid #333;
+}
+.run-logo {
+  font-size: 3rem;
 }

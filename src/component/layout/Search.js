@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Nav, NavItem, NavLink, Form, FormGroup, Label, Input } from "reactstrap";
+import { Nav, Form, FormGroup, Label, Input } from "reactstrap";
 class Search extends Component {
   render() {
     return (

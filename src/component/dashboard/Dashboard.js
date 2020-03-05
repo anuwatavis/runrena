@@ -1,24 +1,25 @@
 import React, { Component } from "react";
 import AtheleteProfile from "./AtheleteProfile";
 import WeekReport from "./WeekReport";
-import ActivitiesDetails from "../Activities/ActivitiesDetails";
+import ActivitiesList from "../Activities/ActivitiesList";
+import CreateActivities from "../Activities/CreateActivities";
+import Information from "./Informations";
 class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div class="container">
-          <div class="row">
-            <div class="col">
+        <div className="container">
+          <div className="row">
+            <div className="col">
               <AtheleteProfile />
               <WeekReport />
             </div>
-            <div class="col-6">
-              <ActivitiesDetails />
-              <WeekReport />
+            <div className="col-6">
+              <CreateActivities />
+              <ActivitiesList />
             </div>
-            <div class="col">
-              <AtheleteProfile />
-              <WeekReport />
+            <div className="col">
+              <Information />
             </div>
           </div>
         </div>
