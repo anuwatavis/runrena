@@ -8,6 +8,18 @@ const initState = {
 };
 
 const activityReducer = (state = initState, action) => {
+  switch (action.type) {
+    case "CREATE_ACTIVITY":
+      console.log(action);
+      console.log("CREATE PROJECT");
+      const newState = {
+        activities: [action.activities, ...state.activities]
+      };
+      return newState;
+    default:
+      return state;
+  }
+
   return state; // send state to store
 };
 

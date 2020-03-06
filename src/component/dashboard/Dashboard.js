@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 class Dashboard extends Component {
   render() {
     const { activities } = this.props;
+    console.log(activities);
     return (
       <div>
         <div className="container">

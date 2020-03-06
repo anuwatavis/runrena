@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 const ActivitiesSummary = ({ activity }) => {
   const date = new Date().toString();
-  console.log(date);
   return (
     <div>
       <Card className="activity feed-entry">

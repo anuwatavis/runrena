@@ -6,7 +6,7 @@ const ActivitiesList = ({ activities }) => {
     <div className="activities-list-section">
       {activities &&
         activities.map(activity => {
-          return <ActivitiesSummary activity={activity} key={activity.id} />;
+          return <ActivitiesSummary activity={activity} key={activity.id + Math.random()} />;
         })}
     </div>
   );
