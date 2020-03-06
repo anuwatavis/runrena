@@ -4,8 +4,10 @@ import WeekReport from "./WeekReport";
 import ActivitiesList from "../Activities/ActivitiesList";
 import CreateActivities from "../Activities/CreateActivities";
 import Information from "./Informations";
+import { connect } from "react-redux";
 class Dashboard extends Component {
   render() {
+    const { activities } = this.props;
     return (
       <div>
         <div className="container">
@@ -16,7 +18,7 @@ class Dashboard extends Component {
             </div>
             <div className="col-6">
               <CreateActivities />
-              <ActivitiesList />
+              <ActivitiesList activities={activities} />
             </div>
             <div className="col">
               <Information />
@@ -27,4 +29,8 @@ class Dashboard extends Component {
     );
   }
 }
-export default Dashboard;
+
+const mapStateToProps = state => {
+  return { activities: state.activities.activities };
+};
+export default connect(mapStateToProps)(Dashboard);

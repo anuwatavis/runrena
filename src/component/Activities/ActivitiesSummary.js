@@ -3,7 +3,9 @@ import Avatar from "react-avatar";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
-const ActivitiesSummary = () => {
+const ActivitiesSummary = ({ activity }) => {
+  const date = new Date().toString();
+  console.log(date);
   return (
     <div>
       <Card className="activity feed-entry">
@@ -21,7 +23,7 @@ const ActivitiesSummary = () => {
             </Col>
             <Col md="10">
               <div className="entry owner">Anu Wat</div>
-              <div className="entry timestamp">Today at 8:24 AM</div>
+              <div className="entry timestamp">{date}</div>
             </Col>
           </Row>
           <Row className="entry-body">
@@ -31,21 +33,21 @@ const ActivitiesSummary = () => {
             <Col md="10">
               <Row>
                 <Col md="12">
-                  <h3>Morning Run</h3>
+                  <h3>{activity.title}</h3>
                 </Col>
                 <Col md="12">
                   <Row>
                     <Col md="4" className="stat-list">
                       <div>Distance</div>
-                      <div>21.00 KM</div>
+                      <div>{activity.distance}</div>
                     </Col>
                     <Col md="4" className="stat-list">
                       <div>Pace</div>
-                      <div>5:10 /KM</div>
+                      <div>{activity.pace}</div>
                     </Col>
                     <Col md="4">
                       <div>Time</div>
-                      <div>1h 48m</div>
+                      <div>{activity.time}</div>
                     </Col>
                   </Row>
                 </Col>

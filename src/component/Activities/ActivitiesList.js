@@ -1,12 +1,13 @@
 import React from "react";
 import ActivitiesSummary from "./ActivitiesSummary";
-
-const ActivitiesList = () => {
+import { Link } from "react-router-dom";
+const ActivitiesList = ({ activities }) => {
   return (
     <div className="activities-list-section">
-      <ActivitiesSummary />
-      <ActivitiesSummary />
-      <ActivitiesSummary />
+      {activities &&
+        activities.map(activity => {
+          return <ActivitiesSummary activity={activity} key={activity.id} />;
+        })}
     </div>
   );
 };
