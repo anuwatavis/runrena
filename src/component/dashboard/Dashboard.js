@@ -7,14 +7,9 @@ import Information from "./Informations";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import axios from "axios";
+import UploadFile from "../Activities/UploadFile";
+
 class Dashboard extends Component {
-  componentDidMount() {
-    axios.get("/api/customers").then(res => {
-      const data = res.data;
-      console.log(data);
-    });
-  }
   render() {
     const { activities } = this.props;
     return (
@@ -26,6 +21,7 @@ class Dashboard extends Component {
               <WeekReport />
             </div>
             <div className="col-6">
+              <UploadFile />
               <CreateActivities />
               <ActivitiesList activities={activities} />
             </div>

@@ -1,21 +1,38 @@
 import React, { Component } from "react";
-import { Form, FormGroup, Label, Input, FormText, Card, CardTitle, CardBody, CardHeader, Button } from "reactstrap";
+import {
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Card,
+  CardTitle,
+  CardBody,
+  CardHeader,
+  Button,
+  Row,
+  Col
+} from "reactstrap";
 import { connect } from "react-redux";
 import { createActivity } from "../store/actions/activityAction";
 class CreateActivities extends Component {
   state = {
     id: 10,
-    title: "",
-    distance: "10 KM",
-    pace: "4.50 /KM",
-    km: "22",
+    titleActivity: "",
+    distanceActivity: "null",
+    paceActivity: "null",
     fileUpload: null,
-    time: "29Min"
+    timeActivity: "null"
   };
   handelChange = e => {
-    this.setState({
-      title: e.target.value
-    });
+    console.log(e.target.id);
+    if (e.target.id === "titleActivity") {
+      this.setState({ titleActivity: e.target.value });
+    } else {
+      this.setState({
+        [e.target.id]: parseFloat(e.target.value)
+      });
+    }
   };
 
   handelChangeFile = e => {
@@ -37,7 +54,7 @@ class CreateActivities extends Component {
           <CardHeader id="test">Post</CardHeader>
           <CardBody className="upload-activity">
             <CardTitle>
-              <h2>Upload Activities</h2>
+              <h2>Upload Activity</h2>
             </CardTitle>
             <Form onSubmit={this.handelSubmit} id="create-course-form">
               <FormGroup>
@@ -45,11 +62,57 @@ class CreateActivities extends Component {
                 <Input
                   type="text"
                   name="title-activity"
-                  id="title"
+                  id="titleActivity"
                   placeholder="Bang Khun Running"
                   onChange={this.handelChange}
+                  required
                 />
               </FormGroup>
+              <Row>
+                <Col md="4">
+                  <FormGroup>
+                    <Label for="distanceActivity">Distance</Label>
+                    <Input
+                      type="number"
+                      name="total-distance"
+                      id="distanceActivity"
+                      placeholder="21 KM"
+                      onChange={this.handelChange}
+                      step="0.01"
+                      required
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md="4">
+                  <FormGroup>
+                    <Label for="paceActivity">Pace</Label>
+                    <Input
+                      type="number"
+                      name="total-pace"
+                      id="paceActivity"
+                      placeholder="2.50 / KM"
+                      onChange={this.handelChange}
+                      step="0.01"
+                      required
+                    />
+                  </FormGroup>
+                </Col>
+                <Col md="4">
+                  <FormGroup>
+                    <Label for="timeActivity">Time</Label>
+                    <Input
+                      type="number"
+                      name="title-distance"
+                      id="timeActivity"
+                      placeholder="50 Min"
+                      onChange={this.handelChange}
+                      step="0.01"
+                      required
+                    />
+                  </FormGroup>
+                </Col>
+              </Row>
+
               <FormGroup>
                 <Label for="exampleFile">File</Label>
                 <Input type="file" name="file" id="fileUpload" onChange={this.handelChangeFile} />

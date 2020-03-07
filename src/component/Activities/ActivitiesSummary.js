@@ -32,21 +32,21 @@ const ActivitiesSummary = ({ activity }) => {
             <Col md="10">
               <Row>
                 <Col md="12">
-                  <h3>{activity.title}</h3>
+                  <h3>{activity.titleActivity}</h3>
                 </Col>
                 <Col md="12">
                   <Row>
                     <Col md="4" className="stat-list">
                       <div>Distance</div>
-                      <div>{activity.distance}</div>
+                      <div>{activity.distanceActivity} Km</div>
                     </Col>
                     <Col md="4" className="stat-list">
                       <div>Pace</div>
-                      <div>{activity.pace}</div>
+                      <div>{activity.paceActivity} /Km</div>
                     </Col>
                     <Col md="4">
                       <div>Time</div>
-                      <div>{activity.time}</div>
+                      <div>{activity.timeActivity} Min</div>
                     </Col>
                   </Row>
                 </Col>
