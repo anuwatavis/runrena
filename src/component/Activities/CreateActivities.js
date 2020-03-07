@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createActivity } from "../store/actions/activityAction";
 class CreateActivities extends Component {
   state = {
-    id: 1,
+    id: 10,
     title: "",
     distance: "10 KM",
     pace: "4.50 /KM",
@@ -64,7 +64,7 @@ class CreateActivities extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createActivity: activities => dispatch({ type: "CREATE_ACTIVITY", activities })
+    createActivity: activity => dispatch(createActivity(activity))
   };
 };
 

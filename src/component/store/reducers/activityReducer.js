@@ -13,14 +13,14 @@ const activityReducer = (state = initState, action) => {
       console.log(action);
       console.log("CREATE PROJECT");
       const newState = {
-        activities: [action.activities, ...state.activities]
+        activities: [action.activity, ...state.activities]
       };
       return newState;
+    case "CREATE_ACTIVITY_ERROR":
+      return state;
     default:
       return state;
   }
-
-  return state; // send state to store
 };
 
 export default activityReducer;

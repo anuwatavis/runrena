@@ -1,6 +1,5 @@
 import React from "react";
 import ActivitiesSummary from "./ActivitiesSummary";
-import { Link } from "react-router-dom";
 const ActivitiesList = ({ activities }) => {
   return (
     <div className="activities-list-section">
