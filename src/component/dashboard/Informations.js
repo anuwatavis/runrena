@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardFooter, CardBody, CardTitle, CardText, CardLink, CardSubtitle } from "reactstrap";
-import { Link } from "react-router-dom";
 const Information = () => {
   return (
     <div>
@@ -16,7 +15,7 @@ const Information = () => {
         <img
           width="100%"
           src="https://storage.googleapis.com/s.race.thai.run/events/5e19521142f3fcf4780ead1a/media/bbb0df21-4985-4693-8d8e-459219241c0a.jpg"
-          alt="Card image cap"
+          alt="runing"
         />
         <CardBody>
           <CardText>

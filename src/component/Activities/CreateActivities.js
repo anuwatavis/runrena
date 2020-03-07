@@ -25,7 +25,9 @@ class CreateActivities extends Component {
   };
   handelSubmit = e => {
     e.preventDefault();
+    console.log(e);
     this.props.createActivity(this.state);
+    document.getElementById("create-course-form").reset();
   };
 
   render() {
@@ -37,7 +39,7 @@ class CreateActivities extends Component {
             <CardTitle>
               <h2>Upload Activities</h2>
             </CardTitle>
-            <Form onSubmit={this.handelSubmit}>
+            <Form onSubmit={this.handelSubmit} id="create-course-form">
               <FormGroup>
                 <Label for="titleActivity">Title Activity</Label>
                 <Input

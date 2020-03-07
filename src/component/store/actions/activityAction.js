@@ -3,7 +3,7 @@ export const createActivity = activity => {
     const firestore = getFirestore();
     console.log("Created Activity");
     firestore
-      .collection("activity")
+      .collection("activities")
       .add({
         ...activity,
         createdAt: new Date()

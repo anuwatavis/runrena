@@ -5,10 +5,18 @@ import ActivitiesList from "../Activities/ActivitiesList";
 import CreateActivities from "../Activities/CreateActivities";
 import Information from "./Informations";
 import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+import axios from "axios";
 class Dashboard extends Component {
+  componentDidMount() {
+    axios.get("/api/customers").then(res => {
+      const data = res.data;
+      console.log(data);
+    });
+  }
   render() {
     const { activities } = this.props;
-    console.log(activities);
     return (
       <div>
         <div className="container">
@@ -32,6 +40,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return { activities: state.activities.activities };
+  return { activities: state.firestore.ordered.activities };
 };
-export default connect(mapStateToProps)(Dashboard);
+export default compose(connect(mapStateToProps), firestoreConnect([{ collection: "activities" }]))(Dashboard);
