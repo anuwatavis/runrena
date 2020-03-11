@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import AtheleteProfile from "./AtheleteProfile";
 import WeekReport from "./WeekReport";
 import ActivitiesList from "../Activities/ActivitiesList";
-import CreateActivities from "../Activities/CreateActivities";
 import Information from "./Informations";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";

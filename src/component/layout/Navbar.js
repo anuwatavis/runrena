@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarToggler, NavbarBrand } from "reactstrap";
 import SignInLinks from "./SignInLink";
 import SignOutLinks from "./SignOutLink";
 import Search from "./Search";
+import { connect } from "react-redux";
 const Navbars = props => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -24,5 +25,9 @@ const Navbars = props => {
     </div>
   );
 };
+const mapStateToProps = state => {
+  console.log(state);
+  return {};
+};
 
-export default Navbars;
+export default connect(mapStateToProps)(Navbars);

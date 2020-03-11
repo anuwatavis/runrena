@@ -1,18 +1,5 @@
 import React, { useState } from "react";
-import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Card,
-  CardBody,
-  Button,
-  CustomInput,
-  CardHeader,
-  Badge,
-  CardTitle
-} from "reactstrap";
+import { Form, FormGroup, Label, Input, Card, CardBody, Button, CustomInput, CardHeader, CardTitle } from "reactstrap";
 import axios from "axios";
 import Message from "./Message";
 import Progressbar from "./Progress";
@@ -23,7 +10,7 @@ import ActivityData from "./ActivityData";
 const UploadFile = ({ createActivity }) => {
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState("Choose File");
-  const [uploadedFile, setUploadedFile] = useState({});
+  //const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [activityData, setActivity] = useState({});

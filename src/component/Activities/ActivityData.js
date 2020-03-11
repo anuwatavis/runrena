@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardBody } from "reactstrap";
-import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 const ActivityData = ({ activityData }) => {
   return (
