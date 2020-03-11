@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import {
   Form,
   FormGroup,
@@ -26,11 +26,15 @@ const UploadFile = () => {
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [activityData, setActivity] = useState({});
+  const [titleActivity, setTitleActivity] = useState("");
 
   const onChange = e => {
     console.log(e.target.files);
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
+  };
+  const onChangeTitle = e => {
+    setTitleActivity(e.target.value);
   };
   const handelUploadFile = async e => {
     e.preventDefault();
@@ -61,7 +65,8 @@ const UploadFile = () => {
         averageElevation,
         totalCalories,
         averageHr,
-        averageCadence
+        averageCadence,
+        titleActivity
       });
       setMessage("File Uploader");
     } catch (err) {
@@ -74,8 +79,9 @@ const UploadFile = () => {
   };
   const handelSubmit = e => {
     e.preventDefault();
-    console.log(e);
+    console.log(titleActivity);
     document.getElementById("create-course-form").reset();
+    console.log(activityData);
   };
 
   return (
@@ -88,17 +94,27 @@ const UploadFile = () => {
           </CardTitle>
           {message ? <Message msg={message} /> : null}
           <Form onSubmit={handelSubmit} id="create-course-form">
-            {/* <FormGroup>
-              <Label for="customfile">{filename}</Label>
-              <Input type="file" name="file" id="customfile" onChange={onChange} />
-              <FormText color="muted">
-                This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps
-                to a new line.
-              </FormText>
-            </FormGroup> */}
+            <FormGroup>
+              <Label for="titleActivity">Title Activity</Label>
+              <Input
+                type="text"
+                name="title-activity"
+                id="titleActivity"
+                placeholder="Bang Khun Running"
+                onChange={onChangeTitle}
+                required
+              />
+            </FormGroup>
             <FormGroup>
               <Label for="FileBrowser">{filename}</Label>
-              <CustomInput type="file" id="FileBrowser" name="customFile" onChange={onChange} label="activity.tcx" />
+              <CustomInput
+                type="file"
+                id="FileBrowser"
+                name="customFile"
+                onChange={onChange}
+                label="activity.tcx"
+                required
+              />
             </FormGroup>
             <Progressbar percentage={uploadPercentage} />
             <ActivityData activityData={activityData} />
@@ -109,7 +125,6 @@ const UploadFile = () => {
           </Form>
         </CardBody>
       </Card>
-
       {/* {activityData ? (
         <div className="row mt-5">
           <div className="col-md-6">
