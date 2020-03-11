@@ -1,11 +1,20 @@
 export const createActivity = activity => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
-    console.log("Created Activity");
+    const totalDistance = parseFloat(activity.totalDistance);
+    const averageElevation = parseInt(activity.averageElevation);
+    const totalCalories = parseInt(activity.totalCalories);
+    const averageHr = parseInt(activity.averageHr);
+    const averageCadence = parseInt(activity.averageCadence);
     firestore
       .collection("activities")
       .add({
         ...activity,
+        totalDistance,
+        averageElevation,
+        totalCalories,
+        averageHr,
+        averageCadence,
         createdAt: new Date()
       })
       .then(() => {

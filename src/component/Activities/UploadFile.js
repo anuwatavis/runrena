@@ -16,10 +16,11 @@ import {
 import axios from "axios";
 import Message from "./Message";
 import Progressbar from "./Progress";
-
+import { connect } from "react-redux";
+import { createActivity } from "../store/actions/activityAction";
 import ActivityData from "./ActivityData";
 
-const UploadFile = () => {
+const UploadFile = ({ createActivity }) => {
   const [file, setFile] = useState(null);
   const [filename, setFilename] = useState("Choose File");
   const [uploadedFile, setUploadedFile] = useState({});
@@ -82,6 +83,7 @@ const UploadFile = () => {
     console.log(titleActivity);
     document.getElementById("create-course-form").reset();
     console.log(activityData);
+    createActivity(activityData);
   };
 
   return (
@@ -139,5 +141,9 @@ const UploadFile = () => {
     </div>
   );
 };
-
-export default UploadFile;
+const mapDispatchToProps = dispatch => {
+  return {
+    createActivity: activity => dispatch(createActivity(activity))
+  };
+};
+export default connect(null, mapDispatchToProps)(UploadFile);

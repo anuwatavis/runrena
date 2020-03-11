@@ -22,7 +22,6 @@ class Dashboard extends Component {
             </div>
             <div className="col-6">
               <UploadFile />
-              <CreateActivities />
               <ActivitiesList activities={activities} />
             </div>
             <div className="col">

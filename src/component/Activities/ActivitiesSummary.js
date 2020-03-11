@@ -38,15 +38,15 @@ const ActivitiesSummary = ({ activity }) => {
                   <Row>
                     <Col md="4" className="stat-list">
                       <div>Distance</div>
-                      <div>{activity.distanceActivity} Km</div>
+                      <div>{activity.totalDistance} Km</div>
                     </Col>
                     <Col md="4" className="stat-list">
                       <div>Pace</div>
-                      <div>{activity.paceActivity} /Km</div>
+                      <div>{activity.averagePace} /Km</div>
                     </Col>
                     <Col md="4">
                       <div>Time</div>
-                      <div>{activity.timeActivity} Min</div>
+                      <div>{activity.totalTime} Min</div>
                     </Col>
                   </Row>
                 </Col>
