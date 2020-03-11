@@ -4,11 +4,12 @@ import SignInLinks from "./SignInLink";
 import SignOutLinks from "./SignOutLink";
 import Search from "./Search";
 import { connect } from "react-redux";
+import SignInLink from "./SignInLink";
 const Navbars = props => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
+  const toggle = props => setIsOpen(!isOpen);
+  const { auth } = props;
+  const links = auth.uid ? <SignInLink /> : <SignOutLinks />;
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -17,8 +18,7 @@ const Navbars = props => {
         <Collapse isOpen={isOpen} navbar>
           <Navbar className="ml-auto">
             <Search />
-            <SignInLinks />
-            <SignOutLinks />
+            {links}
           </Navbar>
         </Collapse>
       </Navbar>
@@ -27,7 +27,9 @@ const Navbars = props => {
 };
 const mapStateToProps = state => {
   console.log(state);
-  return {};
+  return {
+    auth: state.firebase.auth
+  };
 };
 
 export default connect(mapStateToProps)(Navbars);
