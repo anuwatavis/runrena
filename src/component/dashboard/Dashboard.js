@@ -6,11 +6,13 @@ import Information from "./Informations";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import { Redirect } from "react-router-dom";
 import UploadFile from "../Activities/UploadFile";
 
 class Dashboard extends Component {
   render() {
-    const { activities } = this.props;
+    const { activities, auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashbord will go to login
     return (
       <div>
         <div className="container">
@@ -34,6 +36,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
-  return { activities: state.firestore.ordered.activities };
+  return { activities: state.firestore.ordered.activities, auth: state.firebase.auth };
 };
 export default compose(connect(mapStateToProps), firestoreConnect([{ collection: "activities" }]))(Dashboard);
