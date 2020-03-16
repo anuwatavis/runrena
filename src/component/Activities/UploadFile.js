@@ -8,7 +8,7 @@ import { createActivity } from "../store/actions/activityAction";
 import ActivityData from "./ActivityData";
 
 const UploadFile = ({ createActivity }) => {
-  const [file, setFile] = useState(null);
+  const [file, setFile] = useState("a");
   const [filename, setFilename] = useState("Choose File");
   //const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState("");
@@ -16,10 +16,49 @@ const UploadFile = ({ createActivity }) => {
   const [activityData, setActivity] = useState({});
   const [titleActivity, setTitleActivity] = useState("");
 
-  const onChange = e => {
+  const onChange = async e => {
     console.log(e.target.files);
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
+    //setFile(e.target.files[0]);
+    //setFilename(e.target.files[0].name);
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    console.log(formData);
+    try {
+      const res = await axios.post("/upload", formData, {
+        headers: {
+          "Content-type": "multipart/form-data"
+        },
+        onUploadProgress: progressEvent => {
+          setUploadPercentage(parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total)));
+        }
+      });
+      const {
+        totalTime,
+        totalDistance,
+        averagePace,
+        averageElevation,
+        totalCalories,
+        averageHr,
+        averageCadence
+      } = res.data;
+      setActivity({
+        totalTime,
+        totalDistance,
+        averagePace,
+        averageElevation,
+        totalCalories,
+        averageHr,
+        averageCadence,
+        titleActivity
+      });
+      setMessage("File Uploader");
+    } catch (err) {
+      if (err.response.status === 500) {
+        setMessage("There was a problem with the server");
+      } else {
+        setMessage(err.response.data.msg);
+      }
+    }
   };
   const onChangeTitle = e => {
     setTitleActivity(e.target.value);

@@ -12,8 +12,6 @@ app.post("/upload", (req, res) => {
   }
 
   const file = req.files.file;
-
-  let lastLap = {};
   file.mv(`../public/uploads/${file.name}`, err => {
     if (err) {
       console.error(err);

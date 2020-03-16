@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Collapse, Navbar, NavbarToggler, NavbarBrand } from "reactstrap";
-import SignInLinks from "./SignInLink";
 import SignOutLinks from "./SignOutLink";
 import Search from "./Search";
 import { connect } from "react-redux";
