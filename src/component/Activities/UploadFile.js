@@ -18,8 +18,6 @@ const UploadFile = ({ createActivity }) => {
 
   const onChange = async e => {
     console.log(e.target.files);
-    //setFile(e.target.files[0]);
-    //setFilename(e.target.files[0].name);
     const formData = new FormData();
     formData.append("file", e.target.files[0]);
     console.log(formData);
@@ -106,9 +104,9 @@ const UploadFile = ({ createActivity }) => {
   };
   const handelSubmit = e => {
     e.preventDefault();
-    console.log(titleActivity);
-    document.getElementById("create-course-form").reset();
-    console.log(activityData);
+    if (activityData.titleActivity === "") {
+      activityData.titleActivity = titleActivity;
+    }
     createActivity(activityData);
   };
 
