@@ -1,8 +1,14 @@
 export const createActivity = activity => {
+  function convert_to_float(timeString) {
+    var floatValue = parseFloat(timeString.replace(":", "."));
+    return floatValue;
+  }
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const userId = getState().firebase.auth.uid;
+    const totalTime = convert_to_float(activity.totalTime);
+    const averagePace = convert_to_float(activity.averagePace);
     const totalDistance = parseFloat(activity.totalDistance);
     const averageElevation = parseInt(activity.averageElevation);
     const totalCalories = parseInt(activity.totalCalories);
@@ -20,6 +26,8 @@ export const createActivity = activity => {
         totalCalories,
         averageHr,
         averageCadence,
+        totalTime,
+        averagePace,
         createdAt: new Date()
       })
       .then(() => {

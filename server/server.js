@@ -31,6 +31,7 @@ app.post("/upload", (req, res) => {
     data = await neatCsv(data);
     lastLap = data[data.length - 1];
     console.log(lastLap.Time);
+
     res.json({
       // send json data  (activity data)
       totalTime: lastLap["Time"],
