@@ -38,4 +38,7 @@ class Dashboard extends Component {
 const mapStateToProps = state => {
   return { activities: state.firestore.ordered.activities, auth: state.firebase.auth };
 };
-export default compose(connect(mapStateToProps), firestoreConnect([{ collection: "activities" }]))(Dashboard);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([{ collection: "activities", orderBy: ["createdAt", "desc"] }])
+)(Dashboard);
