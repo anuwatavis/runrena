@@ -2,8 +2,9 @@ import React from "react";
 import { Card, CardFooter, CardBody, CardTitle, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
-
-const AtheleteProfile = () => {
+import { connect } from "react-redux";
+const AtheleteProfile = ({ profile }) => {
+  console.log(profile);
   return (
     <div>
       <Card className="athelete-profile-card">
@@ -25,7 +26,7 @@ const AtheleteProfile = () => {
           <Row>
             <Col md="12">
               <CardTitle>
-                <h4>Anu Wat</h4>
+                <h4>{profile.firstName}</h4>
               </CardTitle>
             </Col>
             <Col md="12">
@@ -63,4 +64,9 @@ const AtheleteProfile = () => {
   );
 };
 
-export default AtheleteProfile;
+const mapStateToProps = state => {
+  return {
+    profile: state.firebase.profile
+  };
+};
+export default connect(mapStateToProps)(AtheleteProfile);

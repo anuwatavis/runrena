@@ -11,7 +11,7 @@ const Navbars = props => {
   const links = auth.uid ? <SignInLink profile={profile} /> : <SignOutLinks />;
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="light" light expand="md" fixed="top">
         <NavbarBrand href="/">Runrena</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>

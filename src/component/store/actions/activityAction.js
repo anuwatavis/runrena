@@ -1,6 +1,8 @@
 export const createActivity = activity => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const userId = getState().firebase.auth.uid;
     const totalDistance = parseFloat(activity.totalDistance);
     const averageElevation = parseInt(activity.averageElevation);
     const totalCalories = parseInt(activity.totalCalories);
@@ -10,6 +12,9 @@ export const createActivity = activity => {
       .collection("activities")
       .add({
         ...activity,
+        userFirstName: profile.firstName,
+        userLastName: profile.lastName,
+        userId: userId,
         totalDistance,
         averageElevation,
         totalCalories,

@@ -3,11 +3,12 @@ import Avatar from "react-avatar";
 import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
-const ActivitiesSummary = ({ activity }) => {
-  const date = new Date().toString();
+import { connect } from "react-redux";
+import moment from "moment";
+const ActivitiesSummary = ({ activity, profile }) => {
   return (
     <div>
-      <Card className="activity feed-entry">
+      <Card className="activity feed-entry mt-4">
         <CardBody>
           <Row className="entry header">
             <Col md="2">
@@ -21,8 +22,8 @@ const ActivitiesSummary = ({ activity }) => {
               </Link>
             </Col>
             <Col md="10">
-              <div className="entry owner">Anu Wat</div>
-              <div className="entry timestamp">{date}</div>
+              <div className="entry owner">{activity.userFirstName}</div>
+              <div className="entry timestamp">{moment(activity.createdAt.toDate()).calendar()}</div>
             </Col>
           </Row>
           <Row className="entry-body">
@@ -58,4 +59,10 @@ const ActivitiesSummary = ({ activity }) => {
     </div>
   );
 };
-export default ActivitiesSummary;
+
+const mapStateToprops = state => {
+  return {
+    profile: state.firebase.profile
+  };
+};
+export default connect(mapStateToprops)(ActivitiesSummary);

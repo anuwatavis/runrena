@@ -15,7 +15,7 @@ class Dashboard extends Component {
     if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashbord will go to login
     return (
       <div>
-        <div className="container">
+        <div className="container dashboard">
           <div className="row">
             <div className="col">
               <AtheleteProfile />
