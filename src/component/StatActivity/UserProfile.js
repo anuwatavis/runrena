@@ -3,9 +3,19 @@ import Avatar from "react-avatar";
 import { Card, CardFooter, CardBody, CardTitle, Row, Col, CardHeader } from "reactstrap";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
+
 class UserProfile extends Component {
+  state = {
+    activityCount: 0
+  };
+
   render() {
-    const { profile } = this.props;
+    const { profile, activities } = this.props;
+    let countActivity = "loading";
+    if (activities) {
+      countActivity = activities.length;
+    }
+
     return (
       <div className="container dashboard">
         <Card>
@@ -42,7 +52,7 @@ class UserProfile extends Component {
             </Col>
             <Col>
               <div className="font-weight-bold">last 4 weeks</div>
-              <div className="display-4">12</div>
+              <div className="display-4">{countActivity}</div>
               <div>total activities</div>
             </Col>
             <Col>
