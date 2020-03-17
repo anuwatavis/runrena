@@ -7,15 +7,17 @@ app.use(fileUpload());
 
 // Upload Endpoint
 app.post("/upload", (req, res) => {
+  // post upload
   if (req.files === null) {
-    return res.status(400).json({ msg: "No file uploaded" });
+    return res.status(400).json({ msg: "No file uploaded" }); // res status 400 when no file upload
   }
 
   const file = req.files.file;
   file.mv(`../public/uploads/${file.name}`, err => {
+    //move file to public folder
     if (err) {
       console.error(err);
-      return res.status(500).send(err);
+      return res.status(500).send(err); // res status 500 if err when upload
     }
   });
   console.log(file.name);
@@ -30,6 +32,7 @@ app.post("/upload", (req, res) => {
     lastLap = data[data.length - 1];
     console.log(lastLap.Time);
     res.json({
+      // send json data  (activity data)
       totalTime: lastLap["Time"],
       totalDistance: lastLap["Distance"],
       averagePace: lastLap["Avg Pace"],
@@ -46,6 +49,7 @@ app.post("/upload", (req, res) => {
 });
 
 app.get("/api/customers", (req, res) => {
+  //demo data for test server
   const customers = [
     { id: 1, firstName: "John", lastName: "Doe" },
     { id: 2, firstName: "Brad", lastName: "Traversy" },

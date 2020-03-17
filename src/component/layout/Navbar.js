@@ -7,8 +7,8 @@ import SignInLink from "./SignInLink";
 const Navbars = props => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = props => setIsOpen(!isOpen);
-  const { auth } = props;
-  const links = auth.uid ? <SignInLink /> : <SignOutLinks />;
+  const { auth, profile } = props;
+  const links = auth.uid ? <SignInLink profile={profile} /> : <SignOutLinks />;
   return (
     <div>
       <Navbar color="light" light expand="md">
@@ -27,7 +27,8 @@ const Navbars = props => {
 const mapStateToProps = state => {
   console.log(state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   };
 };
 

@@ -8,14 +8,11 @@ import { createActivity } from "../store/actions/activityAction";
 import ActivityData from "./ActivityData";
 
 const UploadFile = ({ createActivity }) => {
-  const [file, setFile] = useState("a");
   const [filename, setFilename] = useState("Choose File");
-  //const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState("");
   const [uploadPercentage, setUploadPercentage] = useState(0);
   const [activityData, setActivity] = useState({});
   const [titleActivity, setTitleActivity] = useState("");
-
   const onChange = async e => {
     console.log(e.target.files);
     const formData = new FormData();
@@ -61,47 +58,6 @@ const UploadFile = ({ createActivity }) => {
   const onChangeTitle = e => {
     setTitleActivity(e.target.value);
   };
-  const handelUploadFile = async e => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("file", file);
-    try {
-      const res = await axios.post("/upload", formData, {
-        headers: {
-          "Content-type": "multipart/form-data"
-        },
-        onUploadProgress: progressEvent => {
-          setUploadPercentage(parseInt(Math.round((progressEvent.loaded * 100) / progressEvent.total)));
-        }
-      });
-      const {
-        totalTime,
-        totalDistance,
-        averagePace,
-        averageElevation,
-        totalCalories,
-        averageHr,
-        averageCadence
-      } = res.data;
-      setActivity({
-        totalTime,
-        totalDistance,
-        averagePace,
-        averageElevation,
-        totalCalories,
-        averageHr,
-        averageCadence,
-        titleActivity
-      });
-      setMessage("File Uploader");
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage("There was a problem with the server");
-      } else {
-        setMessage(err.response.data.msg);
-      }
-    }
-  };
   const handelSubmit = e => {
     e.preventDefault();
     if (activityData.titleActivity === "") {
@@ -138,30 +94,16 @@ const UploadFile = ({ createActivity }) => {
                 id="FileBrowser"
                 name="customFile"
                 onChange={onChange}
-                label="activity.tcx"
+                label="activity.csv"
                 required
               />
             </FormGroup>
             <Progressbar percentage={uploadPercentage} />
             <ActivityData activityData={activityData} />
-            <Button className="mt-2" onClick={handelUploadFile}>
-              Upload File
-            </Button>
             <Button className="mt-2 float-right">Post</Button>
           </Form>
         </CardBody>
       </Card>
-      {/* {activityData ? (
-        <div className="row mt-5">
-          <div className="col-md-6">
-            <Badge color="secondary">{activityData.totalTime}</Badge>
-            <Badge color="secondary">{activityData.totalTime}</Badge>
-            <Badge color="secondary">{activityData.totalTime}</Badge>
-            <Badge color="secondary">{activityData.totalTime}</Badge>
-            <Badge color="secondary">{activityData.totalTime}</Badge>
-          </div>
-        </div>
-      ) : null} */}
     </div>
   );
 };

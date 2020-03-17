@@ -8,7 +8,7 @@ const SignInLink = props => {
     <Nav navbar>
       <NavItem>
         <a href="/anuwat">
-          <Avatar name="Anu Wat" size="40" round={true} className="avatar" />
+          <Avatar name={props.profile.initials} size="40" round={true} className="avatar" />
         </a>
       </NavItem>
       <NavItem>

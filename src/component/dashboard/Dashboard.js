@@ -12,7 +12,7 @@ import UploadFile from "../Activities/UploadFile";
 class Dashboard extends Component {
   render() {
     const { activities, auth } = this.props;
-    // if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashbord will go to login
+    if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashbord will go to login
     return (
       <div>
         <div className="container">
