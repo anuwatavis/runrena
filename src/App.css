@@ -119,3 +119,13 @@
   font-weight: bold;
   padding: 0px 0px 0px 0px
 }
+
+
+
+
+
+/* userState */
+
+.date-input>input {
+  text-align: center;
+}

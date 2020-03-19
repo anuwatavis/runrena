@@ -3,14 +3,14 @@ import { Card, CardFooter, CardBody, CardTitle, Row, Col } from "reactstrap";
 import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
 import { connect } from "react-redux";
-const AtheleteProfile = ({ profile }) => {
+const AtheleteProfile = ({ profile, auth }) => {
   console.log(profile);
   return (
     <div>
       <Card className="athelete-profile-card">
         <Row>
           <Col md="12">
-            <Link to="/anuwat">
+            <Link to={"/runner/" + auth.uid}>
               <div className="avatar-flex">
                 <Avatar
                   name="Anu Wat"
@@ -66,7 +66,8 @@ const AtheleteProfile = ({ profile }) => {
 
 const mapStateToProps = state => {
   return {
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    auth: state.firebase.auth
   };
 };
 export default connect(mapStateToProps)(AtheleteProfile);

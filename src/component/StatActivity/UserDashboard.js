@@ -1,17 +1,32 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import UserProfile from "./UserProfile";
 import { firestoreConnect } from "react-redux-firebase";
 import { firebaseConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import UserProfile from "./UserProfile";
+import Overview from "./Overview";
+import MyStat from "./MyStat";
+import axios from "axios";
 class UserDashboard extends Component {
+  // state = {
+  //   test: ""
+  // };
+  // componentDidMount() {
+  //   axios.get(`https://us-central1-runrena-b3aa5.cloudfunctions.net/hello/customers`).then(res => {
+  //     const persons = res.data;
+  //     console.log(typeof persons[0]);
+  //     this.setState({ test: persons[0].firstName });
+  //   });
+  // }
   render() {
     const { profile, activities, auth } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
         <UserProfile profile={profile} activities={activities} />
+        <Overview />
+        <MyStat />
       </div>
     );
   }

@@ -16,7 +16,7 @@ function App() {
           <Route exact path="/" component={Dashboard} />
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/anuwat" component={UserDashbord} />
+          <Route path="/runner/:id" component={UserDashbord} />
         </Switch>
       </BrowserRouter>
     </div>

@@ -13,7 +13,7 @@ const SignInLink = props => {
       </NavItem>
       <NavItem>
         {/* <a onClick={props.signOut}>Log Out</a> */}
-        <NavLink href="#" onClick={props.signOut}>
+        <NavLink href="/signin" onClick={props.signOut}>
           Log Out
         </NavLink>
       </NavItem>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardFooter, CardBody, CardTitle, CardText, CardLink, CardSubtitle } from "reactstrap";
-const Information = () => {
+const Information = props => {
   return (
     <div>
       <Card className="mt-5">
@@ -24,6 +24,11 @@ const Information = () => {
           </CardText>
           <CardLink href="#">Join</CardLink>
           <CardLink href="#">Description</CardLink>
+          <CardText>Notification</CardText>
+          <li>Notification</li>
+          <li>Notification</li>
+          <li>Notification</li>
+          <li>Notification</li>
         </CardBody>
         <CardFooter className="text-center">runrena 2020</CardFooter>
       </Card>
