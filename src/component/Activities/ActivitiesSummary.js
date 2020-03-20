@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import moment from "moment";
-const ActivitiesSummary = ({ activity, profile }) => {
+const ActivitiesSummary = ({ activity, profile, auth }) => {
   return (
     <div>
       <Card className="activity feed-entry mt-4">
         <CardBody>
           <Row className="entry header">
             <Col md="2">
-              <Link to="/anuwat">
+              <Link to={"/runner/" + activity.userId}>
                 <Avatar
                   name="Anu Wat"
                   size="50"
@@ -62,7 +62,8 @@ const ActivitiesSummary = ({ activity, profile }) => {
 
 const mapStateToprops = state => {
   return {
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
+    auth: state.firebase.auth
   };
 };
 export default connect(mapStateToprops)(ActivitiesSummary);

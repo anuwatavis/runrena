@@ -14,6 +14,7 @@ const UploadFile = ({ createActivity }) => {
   const [activityData, setActivity] = useState({});
   const [titleActivity, setTitleActivity] = useState("");
   const onChange = async e => {
+    e.preventDefault();
     console.log(e.target.files);
     const formData = new FormData();
     formData.append("file", e.target.files[0]);

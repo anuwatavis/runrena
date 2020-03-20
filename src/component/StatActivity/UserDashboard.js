@@ -32,12 +32,12 @@ class UserDashboard extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   console.log("UserDashBoard -->", state);
-
+  const userId = ownProps.match.params.id;
   return {
-    authId: state.firebase.auth.uid,
-    profile: state.firebase.profile,
+    authId: userId,
+    profile: state.firestore.ordered.users,
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth
   };
@@ -50,6 +50,10 @@ export default compose(
     {
       collection: "activities",
       where: [["userId", "==", props.authId]]
+    },
+    {
+      collection: "users",
+      doc: props.authId
     }
   ])
 )(UserDashboard);

@@ -15,6 +15,7 @@ class UserProfile extends Component {
     if (activities) {
       countActivity = activities.length;
     }
+    console.log(profile);
 
     return (
       <div className="container dashboard">
@@ -29,7 +30,7 @@ class UserProfile extends Component {
                   src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
                 />
               </div>
-              <h5>{profile.firstName}</h5>
+              {profile ? <h5>{profile[0].firstName}</h5> : null}
               <Button color="primary" size="sm" className="rounded-70 mb-3">
                 follow
               </Button>
