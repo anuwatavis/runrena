@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Avatar from "react-avatar";
-import { Card, Row, Col} from "reactstrap";
+import { Card, Row, Col } from "reactstrap";
 import { Button } from "reactstrap";
 
 class UserProfile extends Component {
@@ -52,7 +52,7 @@ class UserProfile extends Component {
             </Col>
             <Col>
               <div className="font-weight-bold">last 4 weeks</div>
-              <div className="display-4">4{countActivity}</div>
+              <div className="display-4">{countActivity}</div>
               <div>total activities</div>
             </Col>
             <Col>
