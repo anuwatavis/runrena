@@ -8,6 +8,9 @@ import UserProfile from "./UserProfile";
 import Overview from "./Overview";
 import MyStat from "./MyStat";
 class UserDashboard extends Component {
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   render() {
     const { profile, activities, auth } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
