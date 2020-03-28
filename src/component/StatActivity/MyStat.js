@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, CardFooter, CardBody, CardTitle, Row, Col, CardHeader } from "reactstrap";
+import { Card, CardBody, Row, Col, CardHeader } from "reactstrap";
 import DayPicker from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import TableStat from "./TableStat";

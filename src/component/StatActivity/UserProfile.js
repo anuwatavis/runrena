@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import Avatar from "react-avatar";
-import { Card, CardFooter, CardBody, CardTitle, Row, Col, CardHeader } from "reactstrap";
+import { Card, Row, Col} from "reactstrap";
 import { Button } from "reactstrap";
-import { Link } from "react-router-dom";
 
 class UserProfile extends Component {
   state = {
@@ -53,7 +52,7 @@ class UserProfile extends Component {
             </Col>
             <Col>
               <div className="font-weight-bold">last 4 weeks</div>
-              <div className="display-4">{countActivity}</div>
+              <div className="display-4">4{countActivity}</div>
               <div>total activities</div>
             </Col>
             <Col>

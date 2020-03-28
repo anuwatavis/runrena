@@ -3,7 +3,8 @@ const fileUpload = require("express-fileupload");
 const neatCsv = require("neat-csv");
 const fs = require("fs");
 const app = express();
-app.use(fileUpload());
+var cors = require("cors");
+app.use(fileUpload(), cors());
 
 // Upload Endpoint
 app.post("/upload", (req, res) => {

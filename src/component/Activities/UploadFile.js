@@ -100,7 +100,7 @@ const UploadFile = ({ createActivity }) => {
               />
             </FormGroup>
             <Progressbar percentage={uploadPercentage} />
-            <ActivityData activityData={activityData} />
+            {activityData.totalDistance ? <ActivityData activityData={activityData} /> : null}
             <Button className="mt-2 float-right">Post</Button>
           </Form>
         </CardBody>

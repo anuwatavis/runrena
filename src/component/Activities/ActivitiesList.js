@@ -1,6 +1,5 @@
 import React from "react";
 import ActivitiesSummary from "./ActivitiesSummary";
-import { Spinner } from "reactstrap";
 import { Alert } from "reactstrap";
 const ActivitiesList = ({ activities }) => {
   if (!activities)

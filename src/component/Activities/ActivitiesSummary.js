@@ -33,7 +33,7 @@ const ActivitiesSummary = ({ activity, profile, auth }) => {
             <Col md="10">
               <Row>
                 <Col md="12">
-                  <h3>{activity.titleActivity}</h3>
+                  <h3 className="thai-font">{activity.titleActivity}</h3>
                 </Col>
                 <Col md="12">
                   <Row>
