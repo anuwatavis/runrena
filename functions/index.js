@@ -26,9 +26,11 @@ const createNotification = notification => {
 
 app.get("/customers", (req, res) => {
   let data = [];
+  let userId = req.query.id;
   admin
     .firestore()
-    .collection("users")
+    .collection("activities")
+    .where("userId", "==", userId)
     .get()
     .then(querySnapshot => {
       querySnapshot.docs.forEach(doc => {

@@ -5,6 +5,7 @@ import "react-day-picker/lib/style.css";
 import TableStat from "./TableStat";
 class MyStat extends Component {
   render() {
+    const { userId } = this.props;
     return (
       <div className="container mt-2 mb-5">
         <Card>
@@ -17,7 +18,7 @@ class MyStat extends Component {
                 </div>
               </Col>
               <Col md="6">
-                <TableStat />
+                <TableStat userId={userId} />
               </Col>
             </Row>
           </CardBody>

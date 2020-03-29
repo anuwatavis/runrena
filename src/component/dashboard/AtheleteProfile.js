@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Avatar from "react-avatar";
 import { connect } from "react-redux";
 const AtheleteProfile = ({ profile, auth }) => {
-  console.log(profile);
   return (
     <div>
       <Card className="athelete-profile-card">

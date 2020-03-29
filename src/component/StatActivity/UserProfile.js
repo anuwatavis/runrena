@@ -14,8 +14,6 @@ class UserProfile extends Component {
     if (activities) {
       countActivity = activities.length;
     }
-    console.log(profile);
-
     return (
       <div className="container dashboard">
         <Card>

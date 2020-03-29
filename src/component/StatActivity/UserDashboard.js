@@ -12,19 +12,19 @@ class UserDashboard extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-    const { profile, activities, auth } = this.props;
+    const { profile, activities, auth, authId } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
+
     return (
       <div>
         <UserProfile profile={profile} activities={activities} />
         <Overview />
-        <MyStat />
+        <MyStat activities={activities} userId={authId} />
       </div>
     );
   }
-
+}
 const mapStateToProps = (state, ownProps) => {
-  console.log("UserDashBoard -->", state);
   const userId = ownProps.match.params.id;
   return {
     authId: userId,
