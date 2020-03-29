@@ -9,22 +9,20 @@ class TableStat extends Component {
   average = activities => {
     let distanceSum = 0;
     let timeSum = 0;
-    let count = activities.length;
-    console.log("TableStat -> count", count);
     let averageStat = {};
+    averageStat["runningCount"] = activities.length;
     activities.forEach(activity => {
       distanceSum = distanceSum + activity.totalDistance;
       timeSum = timeSum + activity.totalTime;
     });
-    averageStat["avgDistance"] = distanceSum / count;
-    averageStat["avgTime"] = timeSum / count;
+    averageStat["avgDistance"] = distanceSum / 7;
+    averageStat["avgTime"] = timeSum / 7;
     console.log("TableStat -> averageStat", averageStat);
     return averageStat;
   };
 
   async componentDidMount() {
     console.log("componentDidMount");
-    let averageStat = {};
     const response = await axios
       .get(`https://us-central1-runrena-b3aa5.cloudfunctions.net/hello/customers`, {
         params: {
@@ -57,15 +55,16 @@ class TableStat extends Component {
             </tr>
             <tr>
               <th scope="row">Avg Distance / Week</th>
-              {averageStat ? <td>{averageStat.avgDistance}</td> : <td>loading</td>}
+              {averageStat ? <td>{averageStat.avgDistance.toFixed(2)} Km</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row">Avg Time / Week</th>
-              <td> 0h 57m</td>
+              {averageStat ? <td>{averageStat.avgTime.toFixed(2)} min</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row">Avg Runs / Week</th>
-              <td>4</td>
+              {averageStat ? <td>{averageStat.runningCount} runs</td> : <td>loading</td>}
+              <td></td>
             </tr>
             <tr>
               <th scope="row" className="text-info">
