@@ -22,7 +22,6 @@ class UserDashboard extends Component {
       </div>
     );
   }
-}
 
 const mapStateToProps = (state, ownProps) => {
   console.log("UserDashBoard -->", state);
