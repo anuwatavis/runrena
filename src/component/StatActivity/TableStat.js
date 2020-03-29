@@ -17,12 +17,10 @@ class TableStat extends Component {
     });
     averageStat["avgDistance"] = distanceSum / 7;
     averageStat["avgTime"] = timeSum / 7;
-    console.log("TableStat -> averageStat", averageStat);
     return averageStat;
   };
 
   async componentDidMount() {
-    console.log("componentDidMount");
     const response = await axios
       .get(`https://us-central1-runrena-b3aa5.cloudfunctions.net/hello/customers`, {
         params: {
@@ -31,18 +29,12 @@ class TableStat extends Component {
       })
       .then(res => {
         const activities = res.data;
-        console.log("TableStat -> componentDidMount -> activities", activities);
         const averageStat = this.average(activities);
         this.setState({ activities: activities, averageStat: averageStat });
       });
   }
   render() {
     const { averageStat } = this.state;
-    if (averageStat) {
-      console.log(averageStat.avgDistance);
-    } else {
-      console.log("null");
-    }
     return (
       <div>
         <Table size="sm">
