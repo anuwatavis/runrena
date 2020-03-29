@@ -35,11 +35,16 @@ class TableStat extends Component {
         const activities = res.data;
         console.log("TableStat -> componentDidMount -> activities", activities);
         const averageStat = this.average(activities);
-
         this.setState({ activities: activities, averageStat: averageStat });
       });
   }
   render() {
+    const { averageStat } = this.state;
+    if (averageStat) {
+      console.log(averageStat.avgDistance);
+    } else {
+      console.log("null");
+    }
     return (
       <div>
         <Table size="sm">
@@ -52,7 +57,7 @@ class TableStat extends Component {
             </tr>
             <tr>
               <th scope="row">Avg Distance / Week</th>
-              <td>10.8 km</td>
+              {averageStat ? <td>{averageStat.avgDistance}</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row">Avg Time / Week</th>
