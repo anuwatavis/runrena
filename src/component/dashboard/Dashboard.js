@@ -8,6 +8,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import UploadFile from "../Activities/UploadFile";
+import UploadTest from "../Activities/UploadTest";
 
 class Dashboard extends Component {
   render() {
@@ -22,7 +23,8 @@ class Dashboard extends Component {
               <WeekReport />
             </div>
             <div className="col-6">
-              <UploadFile />
+              {/* <UploadFile /> */}
+              <UploadTest />
               <ActivitiesList activities={activities} />
             </div>
             <div className="col">
