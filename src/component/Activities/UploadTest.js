@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Papa from "papaparse";
 import { Form, FormGroup, Label, Input, Card, CardBody, Button, CustomInput, CardHeader, CardTitle } from "reactstrap";
 import ActivityData from "./ActivityData";
+import Message from "./Message";
+import { connect } from "react-redux";
+import { createActivity } from "../store/actions/activityAction";
 class UploadTest extends Component {
   state = {
     titleActivity: null,
@@ -38,6 +41,10 @@ class UploadTest extends Component {
   handelTitleChange = e => {
     this.setState({ titleActivity: e.target.value });
   };
+  handelSubmit = e => {
+    e.preventDefault();
+    this.props.createActivity(this.state);
+  };
   render() {
     return (
       <div>
@@ -47,7 +54,7 @@ class UploadTest extends Component {
             <CardTitle>
               <h2>Upload Activity</h2>
             </CardTitle>
-            <Form>
+            <Form onSubmit={this.handelSubmit} id="create-course-form">
               <FormGroup>
                 <Label for="titleActivity">Title Activity</Label>
                 <Input
@@ -59,6 +66,7 @@ class UploadTest extends Component {
                   onChange={this.handelTitleChange}
                 />
               </FormGroup>
+
               <FormGroup>
                 <Label for="FileBrowser">Upload</Label>
                 <CustomInput
@@ -70,6 +78,7 @@ class UploadTest extends Component {
                   required
                 />
               </FormGroup>
+              {this.state.totalTime ? <Message msg={"Upload Completed"} /> : null}
               {this.state.totalTime ? <ActivityData activityData={this.state} /> : null}
               <Button className="mt-2 float-right">Post</Button>
             </Form>
@@ -80,4 +89,9 @@ class UploadTest extends Component {
   }
 }
 
-export default UploadTest;
+const mapDispatchToProps = dispatch => {
+  return {
+    createActivity: activity => dispatch(createActivity(activity))
+  };
+};
+export default connect(null, mapDispatchToProps)(UploadTest);

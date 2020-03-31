@@ -23,7 +23,6 @@ class Dashboard extends Component {
               <WeekReport />
             </div>
             <div className="col-6">
-              {/* <UploadFile /> */}
               <UploadTest />
               <ActivitiesList activities={activities} />
             </div>
