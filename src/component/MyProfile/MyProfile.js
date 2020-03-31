@@ -1,23 +1,15 @@
 import React, { Component } from "react";
 import { Card, Row, Col, Badge, CardHeader, Input, FormGroup, Label, Button, Form } from "reactstrap";
-import { connect } from "react-redux";
 import { Table } from "reactstrap";
 
-class MyProfile extends Component {
+class MyProfile extends React.Component {
   state = {
-    name: null,
-    gender: null,
-    weight: null,
-    height: null,
-    location: null,
-    quote: null,
-    nameClicked: false
+    firstName: this.props.profile.firstName,
+    lastName: this.props.profile.lastName,
+    gender: this.props.profile.gender,
+    height: this.props.profile.height,
+    weight: this.props.profile.weight
   };
-  handelClick = e => {
-    console.log("click");
-    this.setState({ nameClicked: true });
-  };
-
   render() {
     console.log(this.props);
     return (
@@ -36,53 +28,38 @@ class MyProfile extends Component {
               <tbody>
                 <tr>
                   <td>Firstname</td>
-                  <td className="col" id="name" onClick={this.handelClick}>
-                    {/* <div>Anuwat {this.state.nameClicked ? <Input type="text"></Input> : null}</div> */}
-                    <Form inline>
-                      {this.state.nameClicked ? <h6></h6> : <h6>Anuwat</h6>}
-                      <FormGroup>
-                        {this.state.nameClicked ? (
-                          <Input
-                            type="text"
-                            name="password"
-                            id="examplePassword"
-                            placeholder="don't tell!"
-                            className="mr-2"
-                          />
-                        ) : null}
-                      </FormGroup>
-                      {this.state.nameClicked ? <Button>Edit</Button> : null}
-                    </Form>
+                  <td className="col" id="name">
+                    <h6>{this.state.firstName}</h6>
                   </td>
                 </tr>
                 <tr>
                   <td>Lastname</td>
                   <td className="col">
-                    <h6>Sukthong</h6>
+                    <h6>{this.state.lastName}</h6>
                   </td>
                 </tr>
                 <tr>
                   <td>Gender</td>
                   <td>
-                    <h6>Male</h6>
+                    <h6>{this.state.gender}</h6>
                   </td>
                 </tr>
                 <tr>
                   <td>Weight</td>
                   <td>
-                    <h6>60 kg</h6>
+                    <h6>{this.state.weight} kg</h6>
                   </td>
                 </tr>
                 <tr>
                   <td>Height</td>
                   <td>
-                    <h6>167 kg</h6>
+                    <h6>{this.state.height} cm</h6>
                   </td>
                 </tr>
                 <tr>
                   <td>Location</td>
                   <td>
-                    <h6>Phatthalung, Thailand</h6>
+                    <h6>null, null</h6>
                   </td>
                 </tr>
                 <tr>
@@ -101,10 +78,4 @@ class MyProfile extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state);
-  return {
-    profile: state.firebase.profile
-  };
-};
-export default connect(mapStateToProps, null)(MyProfile);
+export default MyProfile;

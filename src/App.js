@@ -6,7 +6,7 @@ import "./App.css";
 import SignIn from "./component/auth/SignIn";
 import SignUp from "./component/auth/SignUp";
 import UserDashbord from "./component/StatActivity/UserDashboard";
-import MyProfile from "./component/StatActivity/MyProfile";
+import MyProfile from "./component/MyProfile/MyProfilePage";
 function App() {
   return (
     <div className="App">
