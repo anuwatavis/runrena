@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Avatar from "react-avatar";
-import { Card, Row, Col } from "reactstrap";
+import { Card, Row, Col, Badge } from "reactstrap";
 import { Button } from "reactstrap";
-
+import { Link } from "react-router-dom";
 class UserProfile extends Component {
   state = {
     activityCount: 0
@@ -14,6 +14,7 @@ class UserProfile extends Component {
     if (activities) {
       countActivity = activities.length;
     }
+    console.log(profile);
     return (
       <div className="container dashboard">
         <Card>
@@ -46,6 +47,11 @@ class UserProfile extends Component {
                   <div className="font-weight-bold">Activities</div>
                   <div>11</div>
                 </Col>
+                <Col md="12" className="mt-4">
+                  <h4>
+                    <Badge color="secondary">Don't dream of winning, train for it!</Badge>
+                  </h4>
+                </Col>
               </Row>
             </Col>
             <Col>
@@ -54,7 +60,14 @@ class UserProfile extends Component {
               <div>total activities</div>
             </Col>
             <Col>
-              <i className="far fa-clock display-4"></i>
+              <Link to={"/profile/"}>
+                <Button color="secondary" size="sm">
+                  <i className="fas fa-user-edit"></i>
+                </Button>
+                <h6>
+                  <Badge color="secondary">Edit Profile</Badge>
+                </h6>
+              </Link>
             </Col>
           </Row>
         </Card>

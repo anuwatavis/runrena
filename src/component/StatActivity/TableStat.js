@@ -9,14 +9,21 @@ class TableStat extends Component {
   average = activities => {
     let distanceSum = 0;
     let timeSum = 0;
+    let elevGain = 0;
     let averageStat = {};
     averageStat["runningCount"] = activities.length;
     activities.forEach(activity => {
       distanceSum = distanceSum + activity.totalDistance;
       timeSum = timeSum + activity.totalTime;
+      elevGain = elevGain + activity.averageElevation;
     });
     averageStat["avgDistance"] = distanceSum / 7;
     averageStat["avgTime"] = timeSum / 7;
+    averageStat["Time"] = timeSum;
+    averageStat["Elevation"] = elevGain;
+    averageStat["totalDistance"] = distanceSum;
+    console.log("TableStat -> averageStat", averageStat);
+
     return averageStat;
   };
 
@@ -66,23 +73,23 @@ class TableStat extends Component {
             </tr>
             <tr>
               <th scope="row">1 K</th>
-              <td>4:17</td>
+              <td>4:17 mins</td>
             </tr>
             <tr>
               <th scope="row">5 K</th>
-              <td>25.16</td>
+              <td>25.16 mins</td>
             </tr>
             <tr>
               <th scope="row">Time</th>
-              <td>13h 36m</td>
+              {averageStat ? <td>{averageStat.Time.toFixed(2)} mins</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row">Elev Gain</th>
-              <td>{this.state.averageGain}</td>
+              {averageStat ? <td>{averageStat.Elevation} m</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row">Run</th>
-              <td>50</td>
+              {averageStat ? <td>{averageStat.runningCount}</td> : <td>loading</td>}
             </tr>
             <tr>
               <th scope="row" className="text-info">
@@ -92,7 +99,7 @@ class TableStat extends Component {
             </tr>
             <tr>
               <th scope="row">Distance</th>
-              <td>205.1 km</td>
+              {averageStat ? <td>{averageStat.totalDistance.toFixed(2)} km</td> : <td>loading</td>}
             </tr>
           </tbody>
         </Table>
