@@ -14,6 +14,8 @@ class MyProfile extends React.Component {
     nameClicked: false,
     lastNameClicked: false,
     quoteClicked: false,
+    weightClicked: false,
+    heightClicked: false,
     authId: this.props.auth
   };
   handleClick = e => {
@@ -50,6 +52,31 @@ class MyProfile extends React.Component {
   handelChangeQuote = e => {
     this.setState({ quote: e.target.value });
   };
+  // edit weight
+  handelClickWeight = e => {
+    this.setState({ weightClicked: true });
+  };
+  handelChangeWeight = e => {
+    this.setState({ weight: e.target.value });
+  };
+  handelSubmitWeight = e => {
+    e.preventDefault();
+    this.setState({ weightClicked: false });
+    this.props.profileUpdate(this.state);
+  };
+
+  //edit height
+  handelClickHeight = e => {
+    this.setState({ heightClicked: true });
+  };
+  handelChangeHeight = e => {
+    this.setState({ height: e.target.value });
+  };
+  handelSubmitHeight = e => {
+    e.preventDefault();
+    this.setState({ heightClicked: false });
+    this.props.profileUpdate(this.state);
+  };
 
   render() {
     return (
@@ -79,10 +106,11 @@ class MyProfile extends React.Component {
                           <FormGroup className="mt-1">
                             <Input
                               type="text"
-                              name="firsname"
-                              id="examplePassword"
+                              name="firstname"
+                              id="firstname"
                               placeholder={this.state.firstName}
                               onChange={this.handelChangeFirstName}
+                              maxlength="45"
                             />
                           </FormGroup>
                           <Button className="btn-sm ml-2">Edit</Button>
@@ -103,10 +131,11 @@ class MyProfile extends React.Component {
                           <FormGroup className="mt-1">
                             <Input
                               type="text"
-                              name="firsname"
-                              id="examplePassword"
+                              name="lastname"
+                              id="lastname"
                               placeholder={this.state.lastName}
                               onChange={this.handleChangeLastName}
+                              maxlength="45"
                             />
                           </FormGroup>
                           <Button className="btn-sm ml-2">Edit</Button>
@@ -124,13 +153,49 @@ class MyProfile extends React.Component {
                 <tr>
                   <td>Weight</td>
                   <td>
-                    <h6>{this.state.weight} kg</h6>
+                    <h6>
+                      {this.state.weight} Kg <i className="far fa-edit" onClick={this.handelClickWeight}></i>
+                    </h6>
+                    {this.state.weightClicked ? (
+                      <div>
+                        <Form inline onSubmit={this.handelSubmitWeight}>
+                          <FormGroup className="mt-1">
+                            <Input
+                              type="number"
+                              name="firsname"
+                              id="weight"
+                              placeholder={this.state.weightClicked}
+                              onChange={this.handelChangeWeight}
+                            />
+                          </FormGroup>
+                          <Button className="btn-sm ml-2">Edit</Button>
+                        </Form>
+                      </div>
+                    ) : null}
                   </td>
                 </tr>
                 <tr>
                   <td>Height</td>
                   <td>
-                    <h6>{this.state.height} cm</h6>
+                    <h6>
+                      {this.state.height} cm <i className="far fa-edit" onClick={this.handelClickHeight}></i>
+                    </h6>
+                    {this.state.heightClicked ? (
+                      <div>
+                        <Form inline onSubmit={this.handelSubmitHeight}>
+                          <FormGroup className="mt-1">
+                            <Input
+                              type="number"
+                              name="firsname"
+                              id="height"
+                              placeholder={this.state.height}
+                              onChange={this.handelChangeHeight}
+                            />
+                          </FormGroup>
+                          <Button className="btn-sm ml-2">Edit</Button>
+                        </Form>
+                      </div>
+                    ) : null}
                   </td>
                 </tr>
                 <tr>

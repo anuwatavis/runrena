@@ -43,7 +43,7 @@ export const signUp = newUser => {
             height: parseInt(newUser.height),
             gender: newUser.gender,
             initials: newUser.firstName[0] + newUser.lastName[0],
-            Quote: ""
+            quote: ""
           });
       })
       .then(() => {
