@@ -48,9 +48,7 @@ class UserProfile extends Component {
                   <div>11</div>
                 </Col>
                 <Col md="12" className="mt-4">
-                  <h4>
-                    <Badge color="secondary">Don't dream of winning, train for it!</Badge>
-                  </h4>
+                  <h4>{profile ? <Badge color="secondary">{profile[0].quote}</Badge> : null}</h4>
                 </Col>
               </Row>
             </Col>

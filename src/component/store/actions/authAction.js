@@ -42,7 +42,8 @@ export const signUp = newUser => {
             weight: parseInt(newUser.weight),
             height: parseInt(newUser.height),
             gender: newUser.gender,
-            initials: newUser.firstName[0] + newUser.lastName[0]
+            initials: newUser.firstName[0] + newUser.lastName[0],
+            Quote: ""
           });
       })
       .then(() => {
