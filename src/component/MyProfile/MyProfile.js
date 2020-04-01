@@ -16,6 +16,7 @@ class MyProfile extends React.Component {
     quoteClicked: false,
     weightClicked: false,
     heightClicked: false,
+    genderClicked: false,
     authId: this.props.auth
   };
   handleClick = e => {
@@ -75,6 +76,20 @@ class MyProfile extends React.Component {
   handelSubmitHeight = e => {
     e.preventDefault();
     this.setState({ heightClicked: false });
+    this.props.profileUpdate(this.state);
+  };
+  //gender
+  handelClickGender = e => {
+    this.setState({ genderClicked: true });
+  };
+  handelChangeGender = e => {
+    console.log(e.target.value);
+    this.setState({ gender: e.target.value });
+  };
+
+  handelSubmitGender = e => {
+    e.preventDefault();
+    this.setState({ genderClicked: false });
     this.props.profileUpdate(this.state);
   };
 
@@ -147,7 +162,32 @@ class MyProfile extends React.Component {
                 <tr>
                   <td>Gender</td>
                   <td>
-                    <h6>{this.state.gender}</h6>
+                    <h6>
+                      {this.state.gender} <i className="far fa-edit" onClick={this.handelClickGender}></i>
+                    </h6>
+                    {this.state.genderClicked ? (
+                      <div>
+                        <Form inline onSubmit={this.handelSubmitGender}>
+                          <FormGroup className="mt-1">
+                            <Input
+                              type="select"
+                              name="select"
+                              id="male"
+                              onChange={this.handelChangeGender}
+                              defaultValue={"DEFAULT"}
+                            >
+                              <option value="DEFAULT" disabled>
+                                Choose here
+                              </option>
+                              <option>Male</option>
+                              <option>Female</option>
+                              <option>Others</option>
+                            </Input>
+                          </FormGroup>
+                          <Button className="btn-sm ml-2">Edit</Button>
+                        </Form>
+                      </div>
+                    ) : null}
                   </td>
                 </tr>
                 <tr>

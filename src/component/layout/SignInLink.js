@@ -7,7 +7,7 @@ const SignInLink = props => {
   return (
     <Nav navbar>
       <NavItem>
-        <a href="/anuwat">
+        <a href={"/runner/" + props.auth}>
           <Avatar name={props.profile.initials} size="40" round={true} className="avatar" />
         </a>
       </NavItem>
@@ -18,7 +18,7 @@ const SignInLink = props => {
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="/anuwat">Anu Wat</NavLink>
+        <NavLink href={"/runner/" + props.auth}>{props.profile.firstName}</NavLink>
       </NavItem>
     </Nav>
   );

@@ -8,7 +8,7 @@ const Navbars = props => {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = props => setIsOpen(!isOpen);
   const { auth, profile } = props;
-  const links = auth.uid ? <SignInLink profile={profile} /> : <SignOutLinks />;
+  const links = auth.uid ? <SignInLink profile={profile} auth={auth.uid} /> : <SignOutLinks />;
   return (
     <div>
       <Navbar color="light" light expand="md" fixed="top">
