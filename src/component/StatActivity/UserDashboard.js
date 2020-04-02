@@ -12,14 +12,30 @@ class UserDashboard extends Component {
     window.scrollTo(0, 0);
   }
   render() {
-    const { profile, activities, auth, authId } = this.props;
+    const { followerProfile, activities, auth, followerId, followedStateData } = this.props;
+    console.log("UserDashboard -> render -> followedStateData", followedStateData);
+    let followerData;
+    if (followedStateData) {
+      if (followedStateData[0]["followers"].length != 0) {
+        followerData = { followerState: followedStateData[0]["followers"][0]["followered"] };
+      } else {
+        followerData = { followerState: false };
+      }
+    }
     if (!auth.uid) return <Redirect to="/signin" />;
-
     return (
       <div>
-        {profile && auth ? <UserProfile profile={profile} activities={activities} userId={auth} /> : null}
+        {followerProfile && auth && followerId && followerProfile && activities && followerData ? (
+          <UserProfile
+            userId={auth.uid}
+            followedState={followerData}
+            followerId={followerId}
+            followerProfile={followerProfile}
+            activities={activities}
+          />
+        ) : null}
         <Overview />
-        <MyStat activities={activities} userId={authId} />
+        <MyStat activities={activities} userId={followerId} />
       </div>
     );
   }
@@ -27,10 +43,11 @@ class UserDashboard extends Component {
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.id;
   return {
-    authId: userId,
-    profile: state.firestore.ordered.users,
+    followerId: userId,
+    followerProfile: state.firestore.ordered.users,
     activities: state.firestore.ordered.activities,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    followedStateData: state.firestore.ordered.runrena_friend
   };
 };
 export default compose(
@@ -40,11 +57,16 @@ export default compose(
     // have props value that get from firebase.auth.uid
     {
       collection: "activities",
-      where: [["userId", "==", props.authId]]
+      where: [["userId", "==", props.followerId]]
     },
     {
       collection: "users",
-      doc: props.authId
+      doc: props.followerId
+    },
+    {
+      collection: "runrena_friend",
+      doc: props.auth.uid,
+      subcollections: [{ collection: "followers", doc: props.followerId }]
     }
   ])
 )(UserDashboard);

@@ -6,13 +6,12 @@ export const followerAction = data => {
       .collection("runrena_friend")
       .doc(data.userId)
       .collection("followers")
-      .doc(data.userFollowerId)
+      .doc(data.followerId)
       .set({
-        followered: data.followed
+        followered: data.followerState
       })
       .then(() => {
         console.log("complete follower");
-        window.location.reload(false);
       })
       .catch(err => {});
   };

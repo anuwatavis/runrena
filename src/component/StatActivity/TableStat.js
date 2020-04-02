@@ -22,8 +22,6 @@ class TableStat extends Component {
     averageStat["Time"] = timeSum;
     averageStat["Elevation"] = elevGain;
     averageStat["totalDistance"] = distanceSum;
-    console.log("TableStat -> averageStat", averageStat);
-
     return averageStat;
   };
 
