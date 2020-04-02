@@ -17,7 +17,7 @@ class UserDashboard extends Component {
 
     return (
       <div>
-        <UserProfile profile={profile} activities={activities} />
+        {profile && auth ? <UserProfile profile={profile} activities={activities} userId={auth} /> : null}
         <Overview />
         <MyStat activities={activities} userId={authId} />
       </div>
