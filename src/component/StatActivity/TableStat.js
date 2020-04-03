@@ -34,9 +34,20 @@ class TableStat extends Component {
       })
       .then(res => {
         const activities = res.data;
+        console.log(activities);
         const averageStat = this.average(activities);
         this.setState({ activities: activities, averageStat: averageStat });
       });
+    // const test = await axios
+    //   .get(`https://us-central1-runrena-b3aa5.cloudfunctions.net/hello/userActivity`, {
+    //     params: {
+    //       id: "L6JvGzT3xURwRWnvmJI25lAF12R2"
+    //     }
+    //   })
+    //   .then(res => {
+    //     const data = res.data;
+    //     console.log(data);
+    //   });
   }
   render() {
     const { averageStat } = this.state;

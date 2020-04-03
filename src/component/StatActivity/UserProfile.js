@@ -25,7 +25,7 @@ class UserProfile extends Component {
     console.log("UserProfile -> data", data);
   };
   render() {
-    console.log(`this state --> `, this.state.followedState);
+    console.log(`this state --> `, this.state.followerProfile);
     return (
       <div className="container dashboard">
         <Card>
@@ -65,7 +65,11 @@ class UserProfile extends Component {
                   <div>11</div>
                 </Col>
                 <Col md="12" className="mt-4">
-                  {/* <h4>{profile ? <Badge color="secondary">{profile[0].quote}</Badge> : null}</h4> */}
+                  <h5>
+                    {this.state.followerProfile ? (
+                      <Badge color="dark">{this.state.followerProfile[0].quote}</Badge>
+                    ) : null}
+                  </h5>
                 </Col>
               </Row>
             </Col>

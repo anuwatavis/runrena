@@ -40,4 +40,15 @@ app.get("/customers", (req, res) => {
     });
 });
 
+app.get("/userActivity", (req, res) => {
+  let data = [];
+  let userId = req.query.id;
+  admin
+    .firestore()
+    .collection("users")
+    .doc(userId)
+    .get()
+    .then(doc => res.json(doc.data()["firstName"]));
+});
+
 exports.hello = functions.https.onRequest(app);
