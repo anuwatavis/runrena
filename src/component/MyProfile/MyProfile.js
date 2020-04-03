@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Card, Row, Col, Badge, CardHeader, Input, FormGroup, Label, Button, Form } from "reactstrap";
+import { Card, Row, Col, CardHeader, Input, FormGroup, Button, Form } from "reactstrap";
 import { Table } from "reactstrap";
 import { connect } from "react-redux";
 import { profileUpdate } from "../store/actions/profileAction";
-class MyProfile extends React.Component {
+class MyProfile extends Component {
   state = {
     firstName: this.props.profile.firstName,
     lastName: this.props.profile.lastName,

@@ -5,9 +5,6 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { followerAction } from "../store/actions/followerAction";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
-let followStatus;
 class UserProfile extends Component {
   state = {
     userId: this.props.userId,

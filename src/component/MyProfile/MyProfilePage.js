@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Card, Row, Col, Badge, CardHeader, Input, FormGroup, Label, Button, Form } from "reactstrap";
 import { connect } from "react-redux";
-import Myprofile from "./MyProfile";
 import MyProfile from "./MyProfile";
 class MyProfilePage extends Component {
   render() {

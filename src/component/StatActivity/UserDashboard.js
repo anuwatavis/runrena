@@ -16,7 +16,7 @@ class UserDashboard extends Component {
     console.log("UserDashboard -> render -> followedStateData", followedStateData);
     let followerData;
     if (followedStateData) {
-      if (followedStateData[0]["followers"].length != 0) {
+      if (followedStateData[0]["followers"].length !== 0) {
         followerData = { followerState: followedStateData[0]["followers"][0]["followered"] };
       } else {
         followerData = { followerState: false };
