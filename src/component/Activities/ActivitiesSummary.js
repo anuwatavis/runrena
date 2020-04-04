@@ -5,7 +5,16 @@ import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import moment from "moment";
-const ActivitiesSummary = ({ activity, profile, auth }) => {
+let name = "";
+const ActivitiesSummary = ({ activity, profile, auth, users }) => {
+  if (users) {
+    users.forEach((user) => {
+      if (activity.userId === user.id) {
+        name = user.firstName;
+      }
+    });
+  }
+
   return (
     <div>
       <Card className="activity feed-entry mt-4">
@@ -22,7 +31,7 @@ const ActivitiesSummary = ({ activity, profile, auth }) => {
               </Link>
             </Col>
             <Col md="10">
-              <div className="entry owner">{activity.userFirstName}</div>
+              <div className="entry owner">{name}</div>
               <div className="entry timestamp">{moment(activity.createdAt.toDate()).calendar()}</div>
             </Col>
           </Row>

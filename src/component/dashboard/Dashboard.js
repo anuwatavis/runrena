@@ -11,7 +11,7 @@ import UploadTest from "../Activities/UploadTest";
 
 class Dashboard extends Component {
   render() {
-    const { activities, auth } = this.props;
+    const { activities, auth, users } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashboard will go to login
     return (
       <div>
@@ -23,7 +23,7 @@ class Dashboard extends Component {
             </div>
             <div className="col-6">
               <UploadTest />
-              <ActivitiesList activities={activities} />
+              <ActivitiesList activities={activities} users={users} />
             </div>
             <div className="col">
               <Information />
@@ -35,10 +35,14 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return { activities: state.firestore.ordered.activities, auth: state.firebase.auth };
+const mapStateToProps = (state) => {
+  return {
+    activities: state.firestore.ordered.activities,
+    auth: state.firebase.auth,
+    users: state.firestore.ordered.users,
+  };
 };
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: "activities", orderBy: ["createdAt", "desc"] }])
+  firestoreConnect([{ collection: "activities", orderBy: ["createdAt", "desc"] }, { collection: "users" }])
 )(Dashboard);

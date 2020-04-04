@@ -17,77 +17,77 @@ class MyProfile extends Component {
     weightClicked: false,
     heightClicked: false,
     genderClicked: false,
-    authId: this.props.auth
+    authId: this.props.auth,
   };
-  handleClick = e => {
+  handleClick = (e) => {
     this.setState({ nameClicked: true });
   };
-  handelClickLastName = e => {
+  handelClickLastName = (e) => {
     this.setState({ lastNameClicked: true });
   };
-  handelChangeFirstName = e => {
+  handelChangeFirstName = (e) => {
     this.setState({ firstName: e.target.value });
   };
-  handleChangeLastName = e => {
+  handleChangeLastName = (e) => {
     this.setState({ lastName: e.target.value });
   };
-  handelSubmit = e => {
+  handelSubmit = (e) => {
     e.preventDefault();
     this.setState({ nameClicked: false });
     this.props.profileUpdate(this.state);
   };
-  handelSubmitLastName = e => {
+  handelSubmitLastName = (e) => {
     e.preventDefault();
     this.setState({ lastNameClicked: false });
   };
 
-  handleClickQuote = e => {
+  handleClickQuote = (e) => {
     this.setState({ quoteClicked: true });
   };
-  handelSubmitQuote = e => {
+  handelSubmitQuote = (e) => {
     e.preventDefault();
     this.setState({ quoteClicked: false });
     this.props.profileUpdate(this.state);
   };
 
-  handelChangeQuote = e => {
+  handelChangeQuote = (e) => {
     this.setState({ quote: e.target.value });
   };
   // edit weight
-  handelClickWeight = e => {
+  handelClickWeight = (e) => {
     this.setState({ weightClicked: true });
   };
-  handelChangeWeight = e => {
+  handelChangeWeight = (e) => {
     this.setState({ weight: e.target.value });
   };
-  handelSubmitWeight = e => {
+  handelSubmitWeight = (e) => {
     e.preventDefault();
     this.setState({ weightClicked: false });
     this.props.profileUpdate(this.state);
   };
 
   //edit height
-  handelClickHeight = e => {
+  handelClickHeight = (e) => {
     this.setState({ heightClicked: true });
   };
-  handelChangeHeight = e => {
+  handelChangeHeight = (e) => {
     this.setState({ height: e.target.value });
   };
-  handelSubmitHeight = e => {
+  handelSubmitHeight = (e) => {
     e.preventDefault();
     this.setState({ heightClicked: false });
     this.props.profileUpdate(this.state);
   };
   //gender
-  handelClickGender = e => {
+  handelClickGender = (e) => {
     this.setState({ genderClicked: true });
   };
-  handelChangeGender = e => {
+  handelChangeGender = (e) => {
     console.log(e.target.value);
     this.setState({ gender: e.target.value });
   };
 
-  handelSubmitGender = e => {
+  handelSubmitGender = (e) => {
     e.preventDefault();
     this.setState({ genderClicked: false });
     this.props.profileUpdate(this.state);
@@ -125,7 +125,7 @@ class MyProfile extends Component {
                               id="firstname"
                               placeholder={this.state.firstName}
                               onChange={this.handelChangeFirstName}
-                              maxlength="45"
+                              maxLength="45"
                             />
                           </FormGroup>
                           <Button className="btn-sm ml-2">Edit</Button>
@@ -150,7 +150,7 @@ class MyProfile extends Component {
                               id="lastname"
                               placeholder={this.state.lastName}
                               onChange={this.handleChangeLastName}
-                              maxlength="45"
+                              maxLength="45"
                             />
                           </FormGroup>
                           <Button className="btn-sm ml-2">Edit</Button>
@@ -278,9 +278,9 @@ class MyProfile extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    profileUpdate: data => dispatch(profileUpdate(data))
+    profileUpdate: (data) => dispatch(profileUpdate(data)),
   };
 };
 export default connect(null, mapDispatchToProps)(MyProfile);
