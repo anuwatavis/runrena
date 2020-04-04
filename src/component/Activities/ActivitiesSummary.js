@@ -60,10 +60,10 @@ const ActivitiesSummary = ({ activity, profile, auth }) => {
   );
 };
 
-const mapStateToprops = state => {
+const mapStateToProps = (state) => {
   return {
     profile: state.firebase.profile,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
-export default connect(mapStateToprops)(ActivitiesSummary);
+export default connect(mapStateToProps)(ActivitiesSummary);
