@@ -1,4 +1,4 @@
-export const profileUpdate = data => {
+export const profileUpdate = (data) => {
   console.log(data);
   console.log("nameUpdate");
   return (dispatch, getState, { getFirestore }) => {
@@ -12,7 +12,7 @@ export const profileUpdate = data => {
         gender: data.gender,
         height: data.height,
         weight: data.weight,
-        quote: data.quote
+        quote: data.quote,
       })
       .then(() => {
         console.log("updateNameDone");
