@@ -1,12 +1,14 @@
 /* dashboard style */
+.searchBox {
+  width: 200px;
+}
 
 .dashboard {
   margin-top: 5rem;
 }
 
 .thai-font {
-  font-family: 'Pridi', serif;
-
+  font-family: "Pridi", serif;
 }
 
 .avatar {
@@ -114,20 +116,14 @@
   font-size: 3rem;
 }
 
-
-
 /* stat page */
 .sub-title {
   font-weight: bold;
-  padding: 0px 0px 0px 0px
+  padding: 0px 0px 0px 0px;
 }
-
-
-
-
 
 /* userState */
 
-.date-input>input {
+.date-input > input {
   text-align: center;
 }

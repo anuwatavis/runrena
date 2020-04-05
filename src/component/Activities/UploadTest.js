@@ -14,17 +14,17 @@ class UploadTest extends Component {
     averageElevation: null,
     totalCalories: null,
     averageHr: null,
-    averageCadence: null
+    averageCadence: null,
   };
-  handelFile = e => {
+  handelFile = (e) => {
     let file = e.target.files[0];
     Papa.parse(file, {
       header: true,
-      complete: this.updateData
+      complete: this.updateData,
     });
   };
 
-  updateData = result => {
+  updateData = (result) => {
     let data = result.data;
     let count = data.length;
     let summary = data[count - 1];
@@ -35,15 +35,16 @@ class UploadTest extends Component {
       averageElevation: summary["Elev Gain"],
       totalCalories: summary["Calories"],
       averageHr: summary["Avg HR"],
-      averageCadence: summary["Avg Run Cadence"]
+      averageCadence: summary["Avg Run Cadence"],
     });
   };
-  handelTitleChange = e => {
+  handelTitleChange = (e) => {
     this.setState({ titleActivity: e.target.value });
   };
-  handelSubmit = e => {
+  handelSubmit = (e) => {
     e.preventDefault();
     this.props.createActivity(this.state);
+    document.getElementById("create-course-form").reset();
   };
   render() {
     return (
@@ -89,9 +90,9 @@ class UploadTest extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    createActivity: activity => dispatch(createActivity(activity))
+    createActivity: (activity) => dispatch(createActivity(activity)),
   };
 };
 export default connect(null, mapDispatchToProps)(UploadTest);

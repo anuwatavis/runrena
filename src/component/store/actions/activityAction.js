@@ -1,4 +1,4 @@
-export const createActivity = activity => {
+export const createActivity = (activity) => {
   function convert_to_float(timeString) {
     var floatValue = parseFloat(timeString.replace(":", "."));
     return floatValue;
@@ -28,13 +28,27 @@ export const createActivity = activity => {
         averageCadence,
         totalTime,
         averagePace,
-        createdAt: new Date()
+        createdAt: new Date(),
       })
       .then(() => {
         dispatch({ type: "CREATE_ACTIVITY", activity });
       })
-      .catch(err => {
+      .catch((err) => {
         dispatch({ type: "CREATE_PROJECT_ERROR" }, err);
+      });
+  };
+};
+
+export const deletePostAction = (activity) => {
+  console.log("deletePostAction -> activity", activity);
+  return (dispatch, getState, { getFirestore }) => {
+    const firestore = getFirestore();
+    firestore
+      .collection("activities")
+      .doc(activity.id)
+      .delete()
+      .then(() => {
+        window.location.reload(false);
       });
   };
 };

@@ -4,9 +4,10 @@ import SignOutLinks from "./SignOutLink";
 import Search from "./Search";
 import { connect } from "react-redux";
 import SignInLink from "./SignInLink";
-const Navbars = props => {
+import SearchBox from "./SearchBox";
+const Navbars = (props) => {
   const [isOpen, setIsOpen] = useState(false);
-  const toggle = props => setIsOpen(!isOpen);
+  const toggle = (props) => setIsOpen(!isOpen);
   const { auth, profile } = props;
   const links = auth.uid ? <SignInLink profile={profile} auth={auth.uid} /> : <SignOutLinks />;
   return (
@@ -16,7 +17,8 @@ const Navbars = props => {
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Navbar className="ml-auto">
-            <Search />
+            {/* <Search /> */}
+            <SearchBox />
             {links}
           </Navbar>
         </Collapse>
@@ -24,11 +26,11 @@ const Navbars = props => {
     </div>
   );
 };
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   console.log(state);
   return {
     auth: state.firebase.auth,
-    profile: state.firebase.profile
+    profile: state.firebase.profile,
   };
 };
 

@@ -1,12 +1,20 @@
 import React from "react";
 import Avatar from "react-avatar";
-import { Card, CardBody } from "reactstrap";
+import { Card, CardBody, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { Row, Col } from "reactstrap";
 import { connect } from "react-redux";
 import moment from "moment";
+import DeletePost from "./DeletePost";
 let name = "";
+let deleteState = false;
+
 const ActivitiesSummary = ({ activity, profile, auth, users }) => {
+  if (auth.uid === activity.userId) {
+    deleteState = true;
+  } else {
+    deleteState = false;
+  }
   if (users) {
     users.forEach((user) => {
       if (activity.userId === user.id) {
@@ -30,10 +38,11 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
                 />
               </Link>
             </Col>
-            <Col md="10">
+            <Col md="8">
               <div className="entry owner">{name}</div>
               <div className="entry timestamp">{moment(activity.createdAt.toDate()).calendar()}</div>
             </Col>
+            <Col md="2">{deleteState ? <DeletePost activity={activity} /> : null}</Col>
           </Row>
           <Row className="entry-body">
             <Col md="2" className="d-flex justify-content-center align-self-center">
@@ -75,4 +84,5 @@ const mapStateToProps = (state) => {
     auth: state.firebase.auth,
   };
 };
+
 export default connect(mapStateToProps)(ActivitiesSummary);
