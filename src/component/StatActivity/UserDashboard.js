@@ -24,7 +24,7 @@ class UserDashboard extends Component {
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
-        {followerProfile && auth && followerId && followerProfile && activities && followerData ? (
+        {followerProfile && auth && followerId && followerProfile && activities && followerData && auth ? (
           <UserProfile
             userId={auth.uid}
             followedState={followerData}

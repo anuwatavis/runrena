@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { followerAction } from "../store/actions/followerAction";
 let followData = {};
+let authState = true;
 class UserProfile extends Component {
   state = {
     userId: this.props.userId,
@@ -25,10 +26,12 @@ class UserProfile extends Component {
   };
   render() {
     let followData = this.state.followerProfile;
+    if (this.state.userId === this.state.followerId) {
+      authState = false;
+    }
     followData.forEach((data) => {
       if (data.id === this.state.followerId) {
         followData = data;
-        console.log(followData);
       }
     });
     return (
@@ -45,15 +48,16 @@ class UserProfile extends Component {
                 />
               </div>
               {this.state.followerProfile ? <h5>{followData.firstName}</h5> : null}
-              {this.state.followedState ? (
+              {this.state.followedState && authState ? (
                 <Button color="primary" size="sm" className="rounded-70 mb-3" onClick={this.handelFollowerClicked}>
                   unfollow
                 </Button>
-              ) : (
+              ) : null}
+              {!this.state.followedState && authState ? (
                 <Button color="primary" size="sm" className="rounded-70 mb-3" onClick={this.handelFollowerClicked}>
                   follow
                 </Button>
-              )}
+              ) : null}
             </Col>
             <Col>
               <Row>
