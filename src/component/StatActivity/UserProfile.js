@@ -5,27 +5,32 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { followerAction } from "../store/actions/followerAction";
+let followData = {};
 class UserProfile extends Component {
   state = {
     userId: this.props.userId,
     followerProfile: this.props.followerProfile,
     followerId: this.props.followerId,
     followedState: this.props.followedState.followerState,
-    activitiesCount: this.props.activities.length
+    activitiesCount: this.props.activities.length,
   };
 
-  handelFollowerClicked = e => {
+  handelFollowerClicked = (e) => {
     let followedStateInvert = !this.state.followedState;
     this.setState({ followedState: followedStateInvert });
     let userId = this.state.userId;
     let followerId = this.state.followerId;
     let data = { userId: userId, followerId: followerId, followerState: followedStateInvert };
     this.props.followerAction(data);
-
-    console.log("UserProfile -> data", data);
   };
   render() {
-    console.log(`this state --> `, this.state.followerProfile);
+    let followData = this.state.followerProfile;
+    followData.forEach((data) => {
+      if (data.id === this.state.followerId) {
+        followData = data;
+        console.log(followData);
+      }
+    });
     return (
       <div className="container dashboard">
         <Card>
@@ -39,7 +44,7 @@ class UserProfile extends Component {
                   src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
                 />
               </div>
-              {this.state.followerProfile ? <h5>{this.state.followerProfile[0].firstName}</h5> : null}
+              {this.state.followerProfile ? <h5>{followData.firstName}</h5> : null}
               {this.state.followedState ? (
                 <Button color="primary" size="sm" className="rounded-70 mb-3" onClick={this.handelFollowerClicked}>
                   unfollow
@@ -65,11 +70,7 @@ class UserProfile extends Component {
                   <div>11</div>
                 </Col>
                 <Col md="12" className="mt-4">
-                  <h5>
-                    {this.state.followerProfile ? (
-                      <Badge color="dark">{this.state.followerProfile[0].quote}</Badge>
-                    ) : null}
-                  </h5>
+                  <h5>{this.state.followerProfile ? <Badge color="dark">{followData.quote}</Badge> : null}</h5>
                 </Col>
               </Row>
             </Col>
@@ -95,9 +96,9 @@ class UserProfile extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    followerAction: data => dispatch(followerAction(data))
+    followerAction: (data) => dispatch(followerAction(data)),
   };
 };
 

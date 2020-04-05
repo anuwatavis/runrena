@@ -13,7 +13,6 @@ class UserDashboard extends Component {
   }
   render() {
     const { followerProfile, activities, auth, followerId, followedStateData } = this.props;
-    console.log("UserDashboard -> render -> followedStateData", followedStateData);
     let followerData;
     if (followedStateData) {
       if (followedStateData[0]["followers"].length !== 0) {
@@ -42,31 +41,32 @@ class UserDashboard extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.id;
+  console.log(userId);
   return {
     followerId: userId,
     followerProfile: state.firestore.ordered.users,
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
-    followedStateData: state.firestore.ordered.runrena_friend
+    followedStateData: state.firestore.ordered.runrena_friend,
   };
 };
 export default compose(
   firebaseConnect(), // connect to firebase because what to auth uid
   connect(mapStateToProps), // map statetoprop
-  firestoreConnect(props => [
+  firestoreConnect((props) => [
     // have props value that get from firebase.auth.uid
     {
       collection: "activities",
-      where: [["userId", "==", props.followerId]]
+      where: [["userId", "==", props.followerId]],
     },
     {
       collection: "users",
-      doc: props.followerId
+      doc: props.followerId,
     },
     {
       collection: "runrena_friend",
       doc: props.auth.uid,
-      subcollections: [{ collection: "followers", doc: props.followerId }]
-    }
+      subcollections: [{ collection: "followers", doc: props.followerId }],
+    },
   ])
 )(UserDashboard);

@@ -4,15 +4,15 @@ import axios from "axios";
 class TableStat extends Component {
   state = {
     activities: null,
-    averageStat: null
+    averageStat: null,
   };
-  average = activities => {
+  average = (activities) => {
     let distanceSum = 0;
     let timeSum = 0;
     let elevGain = 0;
     let averageStat = {};
     averageStat["runningCount"] = activities.length;
-    activities.forEach(activity => {
+    activities.forEach((activity) => {
       distanceSum = distanceSum + activity.totalDistance;
       timeSum = timeSum + activity.totalTime;
       elevGain = elevGain + activity.averageElevation;
@@ -29,12 +29,11 @@ class TableStat extends Component {
     const response = await axios
       .get(`https://us-central1-runrena-b3aa5.cloudfunctions.net/hello/customers`, {
         params: {
-          id: this.props.userId
-        }
+          id: this.props.userId,
+        },
       })
-      .then(res => {
+      .then((res) => {
         const activities = res.data;
-        console.log(activities);
         const averageStat = this.average(activities);
         this.setState({ activities: activities, averageStat: averageStat });
       });
