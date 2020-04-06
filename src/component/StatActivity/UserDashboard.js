@@ -14,7 +14,7 @@ class UserDashboard extends Component {
   render() {
     const { followerProfile, activities, auth, followerId, followedStateData } = this.props;
     let followerData;
-    if (followedStateData) {
+    if (followedStateData !== undefined) {
       if (followedStateData[0]["followers"].length !== 0) {
         followerData = { followerState: followedStateData[0]["followers"][0]["followered"] };
       } else {
@@ -41,7 +41,7 @@ class UserDashboard extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.id;
-  console.log(userId);
+
   return {
     followerId: userId,
     followerProfile: state.firestore.ordered.users,

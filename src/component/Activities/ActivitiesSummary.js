@@ -31,10 +31,10 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
             <Col md="2">
               <Link to={"/runner/" + activity.userId}>
                 <Avatar
-                  name="Anu Wat"
+                  name={name}
                   size="50"
                   round={true}
-                  src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
+                  // src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
                 />
               </Link>
             </Col>
