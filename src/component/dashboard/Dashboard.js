@@ -11,13 +11,19 @@ import UploadTest from "../Activities/UploadTest";
 import axios from "axios";
 import { friendAction } from "../store/actions/friendAction";
 
+let sortedActivities;
 class Dashboard extends Component {
   componentDidMount() {
     this.props.friendAction(this.props.auth.uid);
   }
   render() {
-    const { activities, auth, users } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />; // if don't login and dashboard will go to login
+    const { activities, auth, users, friend } = this.props;
+    //console.log(friend);
+    if (!auth.uid) return <Redirect to="/" />; // if don't login and dashboard will go to login
+    if (activities) {
+      sortedActivities = activities.slice().sort((a, b) => b.createdAt - a.createdAt);
+      console.log(sortedActivities);
+    }
     return (
       <div>
         <div className="container dashboard">
@@ -28,7 +34,7 @@ class Dashboard extends Component {
             </div>
             <div className="col-6">
               <UploadTest />
-              <ActivitiesList activities={activities} users={users} />
+              <ActivitiesList activities={sortedActivities} users={users} />
             </div>
             <div className="col">
               <Information />
@@ -40,12 +46,12 @@ class Dashboard extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
+    friend: state.friend.friend,
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
     users: state.firestore.ordered.users,
-    friend: state.friend.friend,
   };
 };
 
@@ -56,8 +62,9 @@ const mapDispatchToProps = (dispatch) => {
 };
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect((props) => [
-    { collection: "activities", where: [["userId", "in", props.friend]] },
-    { collection: "users" },
-  ])
+  firestoreConnect((props) => {
+    console.log("props", props);
+    return [{ collection: "activities", where: [["userId", "in", props.name]] }, { collection: "users" }];
+  })
 )(Dashboard);
+//where: [["userId", "in", props.friend]]

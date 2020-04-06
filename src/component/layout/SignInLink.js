@@ -3,7 +3,7 @@ import { Nav, NavItem, NavLink } from "reactstrap";
 import Avatar from "react-avatar";
 import { connect } from "react-redux";
 import { signOut } from "../store/actions/authAction";
-const SignInLink = props => {
+const SignInLink = (props) => {
   return (
     <Nav navbar>
       <NavItem>
@@ -13,7 +13,7 @@ const SignInLink = props => {
       </NavItem>
       <NavItem>
         {/* <a onClick={props.signOut}>Log Out</a> */}
-        <NavLink href="/signin" onClick={props.signOut}>
+        <NavLink href="/" onClick={props.signOut}>
           Log Out
         </NavLink>
       </NavItem>
@@ -24,9 +24,9 @@ const SignInLink = props => {
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
   };
 };
 export default connect(null, mapDispatchToProps)(SignInLink);
