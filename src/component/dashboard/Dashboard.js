@@ -22,7 +22,6 @@ class Dashboard extends Component {
     if (!auth.uid) return <Redirect to="/" />; // if don't login and dashboard will go to login
     if (activities) {
       sortedActivities = activities.slice().sort((a, b) => b.createdAt - a.createdAt);
-      console.log(sortedActivities);
     }
     return (
       <div>
@@ -63,7 +62,6 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
-    console.log("props", props);
     return [{ collection: "activities", where: [["userId", "in", props.name]] }, { collection: "users" }];
   })
 )(Dashboard);

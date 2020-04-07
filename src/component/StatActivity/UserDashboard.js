@@ -7,12 +7,14 @@ import { Redirect } from "react-router-dom";
 import UserProfile from "./UserProfile";
 import Overview from "./Overview";
 import MyStat from "./MyStat";
+import { friendAction } from "../store/actions/friendAction";
 class UserDashboard extends Component {
   componentDidMount() {
     window.scrollTo(0, 0);
+    this.props.friendList(this.props.auth.uid);
   }
   render() {
-    const { followerProfile, activities, auth, followerId, followedStateData } = this.props;
+    const { followerProfile, activities, auth, followerId, followedStateData, friend } = this.props;
     let followerData;
     if (followedStateData !== undefined) {
       if (followedStateData[0]["followers"].length !== 0) {
@@ -33,7 +35,7 @@ class UserDashboard extends Component {
             activities={activities}
           />
         ) : null}
-        <Overview />
+        {friend ? <Overview friend={friend} /> : null}
         <MyStat activities={activities} userId={followerId} />
       </div>
     );
@@ -41,18 +43,23 @@ class UserDashboard extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.id;
-
   return {
     followerId: userId,
     followerProfile: state.firestore.ordered.users,
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
     followedStateData: state.firestore.ordered.runrena_friend,
+    friend: state.friend.friend, // frindList of follow
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    friendList: (userId) => dispatch(friendAction(userId)),
   };
 };
 export default compose(
   firebaseConnect(), // connect to firebase because what to auth uid
-  connect(mapStateToProps), // map statetoprop
+  connect(mapStateToProps, mapDispatchToProps), // map statetoprop
   firestoreConnect((props) => [
     // have props value that get from firebase.auth.uid
     {

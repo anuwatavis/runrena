@@ -5,7 +5,7 @@ const initState = {
 const activityStatReducer = (state = initState, action) => {
   switch (action.type) {
     case "ACTIVITY_STAT":
-      console.log("ACTIVITY_POST");
+      console.log("GET_ACTIVITY_STAT");
       const newState = {
         activityStat: action.activities,
       };

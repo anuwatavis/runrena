@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Bar } from "react-chartjs-2";
+
 const data = {
-  labels: ["Anuwat", "John", "Peter", "Natacha", "Tony", "Prayut", "Paiboon", "Teerapong", "Tanapon", "Piyawat"],
+  labels: [],
   datasets: [
     {
       label: "Your Beat",
@@ -9,12 +10,35 @@ const data = {
       borderColor: "white",
       borderWidth: 2,
       barPercentage: 0.4,
-      data: [65, 59, 80, 81, 56, 55, 40, 10, 20, 30, 10]
-    }
-  ]
+      data: [],
+    },
+  ],
 };
 class ChartCompare extends Component {
+  state = {
+    activitiesData: this.props.activities,
+  };
   render() {
+    const { activities } = this.props;
+    var result = [];
+    let name = [];
+    let totalDistance = [];
+    activities.reduce(function (res, value) {
+      if (!res[value.userId]) {
+        res[value.userId] = { userId: value.userId, totalDistance: 0 };
+        result.push(res[value.userId]);
+      }
+      res[value.userId].totalDistance += value.totalDistance;
+      return res;
+    }, {});
+
+    result.forEach((activity) => {
+      name.push(activity.userId);
+      totalDistance.push(activity.totalDistance);
+    });
+
+    data["labels"] = name;
+    data["datasets"][0].data = totalDistance;
     return (
       <div className="pl-5 pr-5">
         <Bar
@@ -27,12 +51,12 @@ class ChartCompare extends Component {
               yAxes: [
                 {
                   ticks: {
-                    beginAtZero: true
-                  }
-                }
-              ]
+                    beginAtZero: true,
+                  },
+                },
+              ],
             },
-            color: ["red", "green", "red", "green", "red", "green", "red", "green"]
+            color: ["red", "green", "red", "green", "red", "green", "red", "green"],
           }}
         />
       </div>
