@@ -5,15 +5,18 @@ import "react-day-picker/lib/style.css";
 import ChartCompare from "./ChartCompare";
 import { connect } from "react-redux";
 import { activityStat } from "../store/actions/activityStatAction";
+import { userDataAction } from "../store/actions/userDataAction";
 class Overview extends Component {
+  componentWillMount() {
+    this.props.friendData(this.props.friend);
+  }
   componentDidMount() {
     this.props.activityData(this.props.friend);
+    //this.props.friendData(this.props.friend);
   }
 
   render() {
-    const { activities, friend } = this.props;
-    console.log("Overview -> render -> activity", activities);
-
+    const { activities, friend, friendFollowerData } = this.props;
     return (
       <div className="container mt-2">
         <Card>
@@ -27,7 +30,11 @@ class Overview extends Component {
             </Col>
           </Row>
           <Row>
-            <Col md="12">{activities ? <ChartCompare activities={activities} friend={friend} /> : null}</Col>
+            <Col md="12">
+              {activities ? (
+                <ChartCompare activities={activities} friend={friend} friendFollowerData={friendFollowerData} />
+              ) : null}
+            </Col>
           </Row>
         </Card>
       </div>
@@ -38,12 +45,14 @@ class Overview extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     activityData: (friendList) => dispatch(activityStat(friendList)),
+    friendData: (friendList) => dispatch(userDataAction(friendList)),
   };
 };
 
 const mapStateToProps = (state) => {
   return {
     activities: state.activitiesStat.activityStat,
+    friendFollowerData: state.userData.users,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Overview);

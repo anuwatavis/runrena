@@ -5,8 +5,9 @@ const data = {
   labels: [],
   datasets: [
     {
-      label: "Your Beat",
-      backgroundColor: "salmon",
+      label: "Beat",
+      backgroundColor: ["red", "green", "blue"],
+      highlightFill: "yellow",
       borderColor: "white",
       borderWidth: 2,
       barPercentage: 0.4,
@@ -17,13 +18,15 @@ const data = {
 class ChartCompare extends Component {
   state = {
     activitiesData: this.props.activities,
+    friendFollowerData: this.props.friendFollowerData,
   };
   render() {
-    const { activities } = this.props;
+    const { activitiesData, friendFollowerData } = this.state;
+
     var result = [];
     let userId = [];
     let totalDistance = [];
-    activities.reduce(function (res, value) {
+    activitiesData.reduce(function (res, value) {
       if (!res[value.userId]) {
         res[value.userId] = { userId: value.userId, totalDistance: 0 };
         result.push(res[value.userId]);
@@ -33,10 +36,15 @@ class ChartCompare extends Component {
     }, {});
 
     result.forEach((activity) => {
-      userId.push(activity.userId);
-      totalDistance.push(activity.totalDistance);
+      friendFollowerData.forEach((data) => {
+        if (activity.userId === data.userId) {
+          console.log(activity.userId, data.userId);
+          userId.push(data.firstName);
+          totalDistance.push(activity.totalDistance);
+        }
+      });
     });
-
+    data["labels"] = userId;
     data["datasets"][0].data = totalDistance;
     return (
       <div className="pl-5 pr-5">
@@ -55,7 +63,18 @@ class ChartCompare extends Component {
                 },
               ],
             },
-            color: ["red", "green", "red", "green", "red", "green", "red", "green"],
+            tooltips: {
+              displayColors: false,
+              titleFontSize: 16,
+              bodyFontSize: 14,
+              xPadding: 10,
+              yPadding: 10,
+              callbacks: {
+                label: (tooltipItem, data) => {
+                  return `${tooltipItem.value} Km`;
+                },
+              },
+            },
           }}
         />
       </div>

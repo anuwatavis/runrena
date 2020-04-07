@@ -1,15 +1,16 @@
-export const profileUpdate = (data) => {
-  console.log(data);
-  console.log("nameUpdate");
+export const userDataAction = (friendId) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firestore
       .collection("users")
+      .where("userId", "in", friendId)
       .get()
-      .then((docs) => {
-        docs.forEach((doc) => {
-          console.log(doc.data);
+      .then((querySnapshot) => {
+        let users = [];
+        querySnapshot.forEach((user) => {
+          users.push(user.data());
         });
+        dispatch({ type: "GET_USERS_DATA", users });
       });
   };
 };

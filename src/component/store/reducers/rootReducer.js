@@ -6,6 +6,7 @@ import { firebaseReducer } from "react-redux-firebase";
 import runrenaReducer from "./runrenaRuducer";
 import activityPostReducer from "../reducers/activityPostReducer";
 import activityStatReducer from "../reducers/activityStatReducer";
+import userDataReducer from "../reducers/userActionReducer";
 const rootReducer = combineReducers({
   auth: authReducer, // state from auth reducer
   activities: activityReducer, // activity state
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   friend: runrenaReducer,
   activityPost: activityPostReducer,
   activitiesStat: activityStatReducer,
+  userData: userDataReducer,
 });
 
 export default rootReducer;
