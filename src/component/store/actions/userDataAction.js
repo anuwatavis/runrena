@@ -5,17 +5,11 @@ export const profileUpdate = (data) => {
     const firestore = getFirestore();
     firestore
       .collection("users")
-      .doc(data.authId)
-      .update({
-        firstName: data.firstName,
-        lastName: data.lastName,
-        gender: data.gender,
-        height: data.height,
-        weight: data.weight,
-        quote: data.quote,
-      })
-      .then(() => {
-        console.log("updateNameDone");
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          console.log(doc.data);
+        });
       });
   };
 };

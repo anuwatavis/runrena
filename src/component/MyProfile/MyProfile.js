@@ -21,6 +21,7 @@ class MyProfile extends Component {
   };
   handleClick = (e) => {
     this.setState({ nameClicked: true });
+    console.log("click");
   };
   handelClickLastName = (e) => {
     this.setState({ lastNameClicked: true });

@@ -21,7 +21,7 @@ class ChartCompare extends Component {
   render() {
     const { activities } = this.props;
     var result = [];
-    let name = [];
+    let userId = [];
     let totalDistance = [];
     activities.reduce(function (res, value) {
       if (!res[value.userId]) {
@@ -33,11 +33,10 @@ class ChartCompare extends Component {
     }, {});
 
     result.forEach((activity) => {
-      name.push(activity.userId);
+      userId.push(activity.userId);
       totalDistance.push(activity.totalDistance);
     });
 
-    data["labels"] = name;
     data["datasets"][0].data = totalDistance;
     return (
       <div className="pl-5 pr-5">

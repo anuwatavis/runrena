@@ -2,11 +2,9 @@ import React from "react";
 import Select from "react-select";
 import { Redirect } from "react-router-dom";
 const options = [
-  { value: "L6JvGzT3xURwRWnvmJI25lAF12R2", label: "Harry" },
-  { value: "LlyLjlqRiiSr2AOYgVS07AN1Mz23", label: "Peter" },
-  { value: "zMqahfX66UMQi4Gd6JScQVRxfNu2", label: "Anuwat" },
-  { value: "9PhDdozZddg8fbqdCkRlun9BY9N2", label: "Bon" },
-  { value: "KdO0ZHja1ZgitIOCVDwCAdQpmlB3", label: "Ron" },
+  { value: "ohvyIh1XewT7U9C9bQgKgxVN7aI3", label: "Harry" },
+  { value: "m9ksLJjFi2SshtZIXqq8OFMSLEo2", label: "Peter" },
+  { value: "XtyfnWfWTzLtfH0AH8QRQY0tKH33", label: "Anuwat" },
 ];
 
 class SearchBox extends React.Component {
