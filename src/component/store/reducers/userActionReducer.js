@@ -2,7 +2,7 @@ const initState = {
   activities: [],
 };
 
-const activityPostReducer = (state = initState, action) => {
+const userDataReducer = (state = initState, action) => {
   switch (action.type) {
     case "GET_USERS_DATA":
       console.log("GET_USERS_DATA");
@@ -17,4 +17,4 @@ const activityPostReducer = (state = initState, action) => {
   }
 };
 
-export default activityPostReducer;
+export default userDataReducer;

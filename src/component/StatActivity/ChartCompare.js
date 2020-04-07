@@ -6,7 +6,17 @@ const data = {
   datasets: [
     {
       label: "Beat",
-      backgroundColor: ["red", "green", "blue"],
+      backgroundColor: [
+        "#4d4c7d",
+        "#fb7b6b",
+        "#d7385e",
+        "#4d4c7d",
+        "#fb7b6b",
+        "#d7385e",
+        "#4d4c7d",
+        "#fb7b6b",
+        "#d7385e",
+      ],
       highlightFill: "yellow",
       borderColor: "white",
       borderWidth: 2,
@@ -20,6 +30,11 @@ class ChartCompare extends Component {
     activitiesData: this.props.activities,
     friendFollowerData: this.props.friendFollowerData,
   };
+
+  componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
+    this.setState({ activitiesData: nextProps.activities });
+  }
   render() {
     const { activitiesData, friendFollowerData } = this.state;
 
@@ -38,14 +53,14 @@ class ChartCompare extends Component {
     result.forEach((activity) => {
       friendFollowerData.forEach((data) => {
         if (activity.userId === data.userId) {
-          console.log(activity.userId, data.userId);
           userId.push(data.firstName);
-          totalDistance.push(activity.totalDistance);
+          totalDistance.push(activity.totalDistance.toFixed(2));
         }
       });
     });
     data["labels"] = userId;
     data["datasets"][0].data = totalDistance;
+    console.log(data);
     return (
       <div className="pl-5 pr-5">
         <Bar

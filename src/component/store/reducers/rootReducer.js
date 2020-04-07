@@ -7,6 +7,7 @@ import runrenaReducer from "./runrenaRuducer";
 import activityPostReducer from "../reducers/activityPostReducer";
 import activityStatReducer from "../reducers/activityStatReducer";
 import userDataReducer from "../reducers/userActionReducer";
+import activityByDateReducer from "../reducers/activityByDateReducer";
 const rootReducer = combineReducers({
   auth: authReducer, // state from auth reducer
   activities: activityReducer, // activity state
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   activityPost: activityPostReducer,
   activitiesStat: activityStatReducer,
   userData: userDataReducer,
+  activityByDate: activityByDateReducer,
 });
 
 export default rootReducer;

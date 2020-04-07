@@ -46,7 +46,7 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
           </Row>
           <Row className="entry-body">
             <Col md="2" className="d-flex justify-content-center align-self-center">
-              {/* <i className="fas fa-running run-logo"></i> */}Logo
+              {/* <i className="fas fa-running run-logo"></i> */}
             </Col>
             <Col md="10">
               <Row>
