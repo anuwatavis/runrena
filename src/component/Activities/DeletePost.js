@@ -17,7 +17,7 @@ const DeletePost = (props) => {
   return (
     <div>
       <Button size="sm" color="danger" onClick={toggle} className="ml-4 rounded-circle">
-        {/* <i className="fa fa-trash-o" aria-hidden="true"></i> */}X
+        <i className="icon-delete_forever-24px"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Delete Post</ModalHeader>

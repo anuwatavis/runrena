@@ -86,7 +86,7 @@ class UserProfile extends Component {
             <Col>
               <Link to={"/profile/"}>
                 <Button color="secondary" size="sm">
-                  {/* <i className="fas fa-user-edit"></i> */}Edit Logo
+                  <i className="icon-pencil2"></i>
                 </Button>
                 <h6>
                   <Badge color="secondary">Edit Profile</Badge>

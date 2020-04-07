@@ -113,7 +113,7 @@ class MyProfile extends Component {
                   <td>Firstname</td>
                   <td className="col" id="name">
                     <h6>
-                      {this.state.firstName} <i className="far fa-edit" onClick={this.handleClick}></i>
+                      {this.state.firstName} <i className="icon-pencil2" onClick={this.handleClick}></i>
                     </h6>
 
                     {this.state.nameClicked ? (
@@ -139,7 +139,7 @@ class MyProfile extends Component {
                   <td>Lastname</td>
                   <td className="col">
                     <h6>
-                      {this.state.lastName} <i className="far fa-edit" onClick={this.handelClickLastName}></i>
+                      {this.state.lastName} <i className="icon-pencil2" onClick={this.handelClickLastName}></i>
                     </h6>
                     {this.state.lastNameClicked ? (
                       <div>
@@ -164,7 +164,7 @@ class MyProfile extends Component {
                   <td>Gender</td>
                   <td>
                     <h6>
-                      {this.state.gender} <i className="far fa-edit" onClick={this.handelClickGender}></i>
+                      {this.state.gender} <i className="icon-pencil2" onClick={this.handelClickGender}></i>
                     </h6>
                     {this.state.genderClicked ? (
                       <div>
@@ -195,7 +195,7 @@ class MyProfile extends Component {
                   <td>Weight</td>
                   <td>
                     <h6>
-                      {this.state.weight} Kg <i className="far fa-edit" onClick={this.handelClickWeight}></i>
+                      {this.state.weight} Kg <i className="icon-pencil2" onClick={this.handelClickWeight}></i>
                     </h6>
                     {this.state.weightClicked ? (
                       <div>
@@ -219,7 +219,7 @@ class MyProfile extends Component {
                   <td>Height</td>
                   <td>
                     <h6>
-                      {this.state.height} cm <i className="far fa-edit" onClick={this.handelClickHeight}></i>
+                      {this.state.height} cm <i className="icon-pencil2" onClick={this.handelClickHeight}></i>
                     </h6>
                     {this.state.heightClicked ? (
                       <div>
@@ -249,7 +249,7 @@ class MyProfile extends Component {
                   <td>Quote</td>
                   <td>
                     <h6>
-                      {this.state.quote} <i className="far fa-edit" onClick={this.handleClickQuote}></i>
+                      {this.state.quote} <i className="icon-pencil2" onClick={this.handleClickQuote}></i>
                     </h6>
                     {this.state.quoteClicked ? (
                       <div>

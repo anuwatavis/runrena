@@ -18,7 +18,7 @@ const Navbars = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Navbar className="ml-auto">
             {/* <Search /> */}
-            <SearchBox />
+            {/* <SearchBox /> */}
             {links}
           </Navbar>
         </Collapse>
