@@ -11,16 +11,8 @@ class TableDayActivity extends Component {
     const { activities } = this.state;
     return (
       <div>
-        {activities &&
-          activities.map((activity) => {
-            return (
-              <h6>
-                {activity.titleActivity} {activity.totalDistance} {activities.totalTime}
-              </h6>
-            );
-          })}
-
-        {/* <Table striped className="table-date-stat table-striped">
+        <h5 className="text-center">Activity Summary</h5>
+        <Table striped className="table-date-stat table-striped">
           <thead className="table-date-stat">
             <tr className="text-center">
               <th>Title</th>
@@ -28,6 +20,20 @@ class TableDayActivity extends Component {
               <th>Pace</th>
             </tr>
           </thead>
+          <tbody className="text-left">
+            {activities &&
+              activities.map((activity) => {
+                return (
+                  <tr key={Math.random()}>
+                    <td>{activity.titleActivity}</td>
+                    <td>{activity.totalTime}</td>
+                    <td>{activity.averagePace}</td>
+                  </tr>
+                );
+              })}
+          </tbody>
+        </Table>
+        {/* <Table striped className="table-date-stat table-striped">
           <tbody className="text-left">
             <tr>
               <td>Morning Run</td>

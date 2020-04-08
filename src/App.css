@@ -1,10 +1,9 @@
 @font-face {
-  font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?a8l7vx');
-  src: url('fonts/icomoon.eot?a8l7vx#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?a8l7vx') format('truetype'),
-    url('fonts/icomoon.woff?a8l7vx') format('woff'),
-    url('fonts/icomoon.svg?a8l7vx#icomoon') format('svg');
+  font-family: "icomoon";
+  src: url("fonts/icomoon.eot?a8l7vx");
+  src: url("fonts/icomoon.eot?a8l7vx#iefix") format("embedded-opentype"),
+    url("fonts/icomoon.ttf?a8l7vx") format("truetype"), url("fonts/icomoon.woff?a8l7vx") format("woff"),
+    url("fonts/icomoon.svg?a8l7vx#icomoon") format("svg");
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -12,7 +11,7 @@
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  font-family: "icomoon" !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -36,7 +35,6 @@ i {
 .icon-tongue2:before {
   content: "\e9e4";
 }
-
 
 .icon-delete_forever-24px:before {
   content: "\e900";
@@ -167,7 +165,7 @@ i {
 
 /* userState */
 
-.date-input>input {
+.date-input > input {
   text-align: center;
 }
 
@@ -176,7 +174,7 @@ i {
   font-size: 0.9rem;
 }
 
-/* .table-striped>tbody>tr:nth-child(2n+1)>td,
-.table-striped>tbody>tr:nth-child(2n+1)>th {
-  background-color: #F76157;
-} */
+.table-striped > tbody > tr:nth-child(2n + 1) > td,
+.table-striped > tbody > tr:nth-child(2n + 1) > th {
+  background-color: #fdbfba;
+}

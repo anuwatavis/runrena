@@ -34,7 +34,17 @@ class MyStat extends Component {
     dateTimeAndUserId.push(range);
     this.props.getActivityUserByDate(dateTimeAndUserId);
   };
-
+  componentDidMount() {
+    var today = new Date();
+    var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    let todayTimeStamp = new Date(date);
+    let dateTimeAndUserId = [this.props.userId];
+    let dateData = { from: todayTimeStamp, to: null };
+    dateTimeAndUserId.push(dateData);
+    let range = { from: todayTimeStamp, to: todayTimeStamp };
+    this.setState(range);
+    this.props.getActivityUserByDate(dateTimeAndUserId);
+  }
   handleResetClick() {
     this.setState(this.getInitialState());
   }
@@ -81,7 +91,11 @@ class MyStat extends Component {
               <Col md="4">
                 <div className="">
                   {this.props.activityUserByDate ? (
-                    <TableDayActivity className="mb-6" activityUserByDate={this.props.activityUserByDate} />
+                    <TableDayActivity
+                      className="mb-6"
+                      activityUserByDate={this.props.activityUserByDate}
+                      date={this.state}
+                    />
                   ) : null}
                 </div>
               </Col>

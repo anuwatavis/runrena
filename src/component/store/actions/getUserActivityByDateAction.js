@@ -1,5 +1,5 @@
 export const getUserActivityByDateAction = (dateTimeAndUserId) => {
-  console.log("getActi");
+  console.log(dateTimeAndUserId);
   let userId = dateTimeAndUserId[0];
   let from = dateTimeAndUserId[1]["from"];
   let to = dateTimeAndUserId[1]["to"];
@@ -16,6 +16,7 @@ export const getUserActivityByDateAction = (dateTimeAndUserId) => {
     end = to.toLocaleDateString();
     dateEnd = new Date(end);
   }
+
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     if (dateStart && dateEnd) {
@@ -36,11 +37,13 @@ export const getUserActivityByDateAction = (dateTimeAndUserId) => {
             dispatch({ type: "GET_ACTIVITY_USER_BY_DATE", activities });
           });
       } else {
+        let newDate = new Date(dateEnd);
+        newDate.setDate(newDate.getDate() + 1);
         firestore
           .collection("activities")
           .where("userId", "==", userId)
           .where("createdAt", ">", dateStart)
-          .where("createdAt", "<", dateEnd)
+          .where("createdAt", "<=", newDate)
           .get()
           .then((querySnapshot) => {
             let activities = [];
