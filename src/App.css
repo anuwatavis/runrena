@@ -170,3 +170,13 @@ i {
 .date-input>input {
   text-align: center;
 }
+
+/* table stat */
+.table-date-stat {
+  font-size: 0.9rem;
+}
+
+/* .table-striped>tbody>tr:nth-child(2n+1)>td,
+.table-striped>tbody>tr:nth-child(2n+1)>th {
+  background-color: #F76157;
+} */
