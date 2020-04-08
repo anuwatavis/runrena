@@ -16,12 +16,18 @@ class UserDashboard extends Component {
   render() {
     const { followerProfile, activities, auth, followerId, followedStateData, friend } = this.props;
     let followerData;
+
     if (followedStateData !== undefined) {
-      if (followedStateData[0]["followers"].length !== 0) {
-        followerData = { followerState: followedStateData[0]["followers"][0]["followered"] };
+      if ("followers" in followedStateData[0]) {
+        if (followedStateData[0]["followers"].length !== 0) {
+          followerData = { followerState: followedStateData[0]["followers"][0]["followered"] };
+        } else {
+          followerData = { followerState: false };
+        }
       } else {
         followerData = { followerState: false };
       }
+    } else {
     }
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
