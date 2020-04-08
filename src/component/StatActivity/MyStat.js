@@ -7,6 +7,7 @@ import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
 import { getUserActivityByDateAction } from "../store/actions/getUserActivityByDateAction";
 import { connect } from "react-redux";
+
 class MyStat extends Component {
   static defaultProps = {
     numberOfMonths: 1,

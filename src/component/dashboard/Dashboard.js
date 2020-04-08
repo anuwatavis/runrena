@@ -10,12 +10,19 @@ import { Redirect } from "react-router-dom";
 import UploadTest from "../Activities/UploadTest";
 import axios from "axios";
 import { friendAction } from "../store/actions/friendAction";
+import { Button } from "reactstrap";
 
 let sortedActivities;
 class Dashboard extends Component {
   componentDidMount() {
     this.props.friendAction(this.props.auth.uid);
   }
+  handelClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   render() {
     const { activities, auth, users, friend } = this.props;
     //console.log(friend);
@@ -40,6 +47,9 @@ class Dashboard extends Component {
             </div>
           </div>
         </div>
+        <Button className="scroll" onClick={this.handelClick}>
+          <h2>^</h2>
+        </Button>
       </div>
     );
   }
