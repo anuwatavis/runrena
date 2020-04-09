@@ -33,25 +33,6 @@ class TableDayActivity extends Component {
               })}
           </tbody>
         </Table>
-        {/* <Table striped className="table-date-stat table-striped">
-          <tbody className="text-left">
-            <tr>
-              <td>Morning Run</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <td>Phatthalung Running</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
-          </tbody>
-        </Table> */}
       </div>
     );
   }

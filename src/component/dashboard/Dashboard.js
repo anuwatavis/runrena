@@ -56,6 +56,7 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log("mapStateToProps -> state", state);
   return {
     friend: state.friend.friend,
     activities: state.firestore.ordered.activities,
@@ -72,7 +73,10 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
-    return [{ collection: "activities", where: [["userId", "in", props.name]] }, { collection: "users" }];
+    return [
+      { collection: "activities", where: [["userId", "in", props.name]] },
+      { collection: "users", where: [["userId", "in", props.name]] },
+    ];
   })
 )(Dashboard);
 //where: [["userId", "in", props.friend]]

@@ -45,6 +45,7 @@ export const signUp = (newUser) => {
             initials: newUser.firstName[0] + newUser.lastName[0],
             quote: "",
             userId: resp.user.uid,
+            followers: 0,
           });
       })
       .then(() => {

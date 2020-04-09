@@ -1,5 +1,4 @@
-export const followerAction = data => {
-  console.log("dataFromFollowerAction", data);
+export const followerAction = (data) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firestore
@@ -8,11 +7,28 @@ export const followerAction = data => {
       .collection("followers")
       .doc(data.followerId)
       .set({
-        followered: data.followerState
+        followered: data.followerState,
       })
       .then(() => {
+        firestore
+          .collection("users")
+          .doc(data.userId)
+          .get()
+          .then((querySnapshot) => {
+            let followerCount = querySnapshot.data()["followers"];
+            if (data.followerState === true) {
+              followerCount = followerCount + 1;
+            } else {
+              followerCount = followerCount - 1;
+            }
+            firestore
+              .collection("users")
+              .doc(data.userId)
+              .update({ followers: followerCount })
+              .then(console.log("done"));
+          });
         console.log("complete follower");
       })
-      .catch(err => {});
+      .catch((err) => {});
   };
 };

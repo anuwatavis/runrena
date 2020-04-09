@@ -33,7 +33,7 @@ const AtheleteProfile = ({ profile, auth }) => {
                 <Col md="4">
                   <div className="text-small">Following</div>
                   <div className="stat-profile">
-                    <a href="/">1</a>
+                    <p>{profile.followers}</p>
                   </div>
                 </Col>
                 <Col md="4">
@@ -63,10 +63,10 @@ const AtheleteProfile = ({ profile, auth }) => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     profile: state.firebase.profile,
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
   };
 };
 export default connect(mapStateToProps)(AtheleteProfile);
