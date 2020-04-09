@@ -2,8 +2,8 @@ import React from "react";
 import Select from "react-select";
 import { Redirect } from "react-router-dom";
 const options = [
-  { value: "ohvyIh1XewT7U9C9bQgKgxVN7aI3", label: "Harry" },
-  { value: "m9ksLJjFi2SshtZIXqq8OFMSLEo2", label: "Peter" },
+  { value: "7FKB6O9B5ec0Cx7gPw6glBLJxdp2", label: "Anu" },
+  { value: "nwuuK1tXPYTaCpL1h6IkNilHIM32", label: "Peter" },
   { value: "XtyfnWfWTzLtfH0AH8QRQY0tKH33", label: "Anuwat" },
   { value: "jcB2aVB87SNUUj3BVB99ETo25Zm2", label: "Toby" },
 ];

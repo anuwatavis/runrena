@@ -33,19 +33,19 @@ const AtheleteProfile = ({ profile, auth }) => {
                 <Col md="4">
                   <div className="text-small">Following</div>
                   <div className="stat-profile">
-                    <p>{profile.followers}</p>
+                    <p>{profile.following}</p>
                   </div>
                 </Col>
                 <Col md="4">
                   <div className="text-small">Follower</div>
                   <div className="stat-profile">
-                    <a href="/">100</a>
+                    <p>{profile.followers}</p>
                   </div>
                 </Col>
                 <Col md="4">
                   <div className="text-small">Activities</div>
                   <div className="stat-profile">
-                    <a href="/">2000</a>
+                    <p>{profile.activities}</p>
                   </div>
                 </Col>
               </Row>

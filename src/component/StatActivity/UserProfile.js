@@ -5,6 +5,7 @@ import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { followerAction } from "../store/actions/followerAction";
+import { followerCountAction } from "../store/actions/followerCountAction";
 let followData = {};
 let authState = true;
 class UserProfile extends Component {
@@ -23,6 +24,7 @@ class UserProfile extends Component {
     let followerId = this.state.followerId;
     let data = { userId: userId, followerId: followerId, followerState: followedStateInvert };
     this.props.followerAction(data);
+    this.props.followerCountAction(data);
   };
   render() {
     let followData = this.state.followerProfile;
@@ -103,6 +105,7 @@ class UserProfile extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     followerAction: (data) => dispatch(followerAction(data)),
+    followerCountAction: (data) => dispatch(followerCountAction(data)),
   };
 };
 

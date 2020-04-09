@@ -31,7 +31,19 @@ export const createActivity = (activity) => {
         createdAt: new Date(),
       })
       .then(() => {
-        dispatch({ type: "CREATE_ACTIVITY", activity });
+        firestore
+          .collection("users")
+          .doc(userId)
+          .get()
+          .then((querySnapshot) => {
+            let activityCount = querySnapshot.data()["activities"] + 1;
+            firestore
+              .collection("users")
+              .doc(userId)
+              .update({ activities: activityCount })
+              .then(console.log("done activity count"));
+            dispatch({ type: "CREATE_ACTIVITY", activity });
+          });
       })
       .catch((err) => {
         dispatch({ type: "CREATE_PROJECT_ERROR" }, err);
@@ -42,13 +54,26 @@ export const createActivity = (activity) => {
 export const deletePostAction = (activity) => {
   console.log("deletePostAction -> activity", activity);
   return (dispatch, getState, { getFirestore }) => {
+    const userId = getState().firebase.auth.uid;
     const firestore = getFirestore();
     firestore
       .collection("activities")
       .doc(activity.id)
       .delete()
       .then(() => {
-        window.location.reload(false);
+        firestore
+          .collection("users")
+          .doc(userId)
+          .get()
+          .then((querySnapshot) => {
+            let activityCount = querySnapshot.data()["activities"] - 1;
+            firestore
+              .collection("users")
+              .doc(userId)
+              .update({ activities: activityCount })
+              .then(console.log("delete activity count"));
+            window.location.reload(false);
+          });
       });
   };
 };
