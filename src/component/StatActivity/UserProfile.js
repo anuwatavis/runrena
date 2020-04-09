@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { followerAction } from "../store/actions/followerAction";
 import { followerCountAction } from "../store/actions/followerCountAction";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
+
 let followData = {};
 let authState = true;
 class UserProfile extends Component {
@@ -36,6 +39,7 @@ class UserProfile extends Component {
         followData = data;
       }
     });
+    const { profileData } = this.props;
     return (
       <div className="container dashboard">
         <Card>
@@ -62,36 +66,38 @@ class UserProfile extends Component {
               ) : null}
             </Col>
             <Col>
-              <Row>
+              <Row className="mt-3">
                 <Col md="4" className="stat-list px-0">
                   <div className="font-weight-bold">Follwers</div>
-                  <div>12</div>
+                  <p>{profileData["followers"]}</p>
                 </Col>
                 <Col md="4" className="stat-list px-0">
                   <div className="font-weight-bold">Follwing</div>
-                  <div>123</div>
+                  <p>{profileData["following"]}</p>
                 </Col>
                 <Col md="4" className="px-0">
                   <div className="font-weight-bold">Activities</div>
-                  <div>11</div>
+                  <p>{profileData["activities"]}</p>
                 </Col>
-                <Col md="12" className="mt-4">
+                <Col md="12" className="mt-3">
                   <h5>{this.state.followerProfile ? <Badge color="dark">{followData.quote}</Badge> : null}</h5>
                 </Col>
               </Row>
             </Col>
             <Col>
-              <div className="font-weight-bold">last 4 weeks</div>
-              <div className="display-4">{this.state.activitiesCount}</div>
+              <div className="font-weight-bold">Runrena Score</div>
+              <div className="display-4">{profileData["activities"]}</div>
               <div>total activities</div>
             </Col>
-            <Col>
-              <Link to={"/profile/"}>
-                <Button color="secondary" size="sm">
+            <Col className="mt-0">
+              <Link to={"/profile/"} className="mt-0">
+                <Button color="secondary" size="sm" className="mt-0">
                   <i className="icon-pencil2"></i>
                 </Button>
                 <h6>
-                  <Badge color="secondary">Edit Profile</Badge>
+                  <Badge className="mt-0" color="secondary">
+                    Edit Profile
+                  </Badge>
                 </h6>
               </Link>
             </Col>
@@ -109,4 +115,18 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(UserProfile);
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    profile: state.firebase.profile,
+    auth: state.firebase.auth,
+    profileData: state.firestore.ordered.users[0],
+  };
+};
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect((props) => {
+    console.log(props);
+    return [{ collection: "users", where: [["userId", "in", [props.followerId]]] }];
+  })
+)(UserProfile);
