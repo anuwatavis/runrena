@@ -25,6 +25,7 @@ const data = {
     },
   ],
 };
+
 class ChartCompare extends Component {
   state = {
     activitiesData: this.props.activities,
