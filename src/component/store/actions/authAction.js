@@ -46,6 +46,7 @@ export const signUp = (newUser) => {
             quote: "",
             userId: resp.user.uid,
             followers: 0,
+            following: 0,
             activities: 0,
           });
       })
