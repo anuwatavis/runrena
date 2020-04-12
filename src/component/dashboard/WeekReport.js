@@ -17,7 +17,7 @@ class WeekReport extends Component {
     dateTimeAndUserId.push(start);
     dateTimeAndUserId.push(end);
     dateTimeAndUserId.push(this.props.auth);
-    console.log("WeekReport -> componentDidMount -> dateTimeAndUserId", dateTimeAndUserId);
+    //console.log("WeekReport -> componentDidMount -> dateTimeAndUserId", dateTimeAndUserId);
     this.props.weekActivity(dateTimeAndUserId);
   };
   render() {
@@ -26,7 +26,7 @@ class WeekReport extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  //console.log(state);
   //console.log(state);
   return {
     auth: state.firebase.auth.uid,

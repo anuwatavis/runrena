@@ -1,5 +1,5 @@
 export const weekQueryAction = (dateTimeAndUserId) => {
-  console.log(dateTimeAndUserId);
+  // console.log(dateTimeAndUserId);
   let start = dateTimeAndUserId[0];
   let end = dateTimeAndUserId[1];
   let userId = dateTimeAndUserId[2];
@@ -15,7 +15,7 @@ export const weekQueryAction = (dateTimeAndUserId) => {
         let activities = [];
         querySnapshot.forEach((activity) => {
           activities.push(activity.data());
-          console.log(activities);
+          //console.log(activities);
         });
         dispatch({ type: "GET_WEEK_ACTIVITY", activities });
       });

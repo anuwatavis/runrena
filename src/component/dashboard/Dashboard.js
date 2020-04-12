@@ -11,9 +11,15 @@ import UploadTest from "../Activities/UploadTest";
 import axios from "axios";
 import { friendAction } from "../store/actions/friendAction";
 import { Button } from "reactstrap";
+import { limitActivityQuery } from "../store/actions/limitActivityQuery";
+import { Col, Row } from "reactstrap";
 
 let sortedActivities;
+let countQuery = 10;
 class Dashboard extends Component {
+  state = {
+    activitiLimit: 5,
+  };
   componentDidMount() {
     this.props.friendAction(this.props.auth.uid);
   }
@@ -23,6 +29,11 @@ class Dashboard extends Component {
       behavior: "smooth",
     });
   };
+  handelQuery = () => {
+    countQuery = countQuery + 10;
+    this.props.limitQuery(countQuery);
+  };
+
   render() {
     const { activities, auth, users, friend } = this.props;
     //console.log(friend);
@@ -41,7 +52,15 @@ class Dashboard extends Component {
             <div className="col-6">
               <UploadTest />
               <ActivitiesList activities={sortedActivities} users={users} />
+              <Row>
+                <Col md={12}>
+                  <Button className="col-12 mb-5" onClick={this.handelQuery}>
+                    MORE
+                  </Button>
+                </Col>
+              </Row>
             </div>
+
             <div className="col">
               <Information />
             </div>
@@ -62,19 +81,22 @@ const mapStateToProps = (state, ownProps) => {
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
     users: state.firestore.ordered.users,
+    limit: state.limitQueryReducer.limit,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     friendAction: (userId) => dispatch(friendAction(userId)),
+    limitQuery: (data) => dispatch(limitActivityQuery(data)),
   };
 };
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
+    console.log("props dashboard ==>", props);
     return [
-      { collection: "activities", where: [["userId", "in", props.name]] },
+      { collection: "activities", where: [["userId", "in", props.name]], limit: props.limit },
       { collection: "users", where: [["userId", "in", props.name]] },
     ];
   })

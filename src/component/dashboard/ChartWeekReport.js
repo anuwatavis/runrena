@@ -48,7 +48,7 @@ class ChartWeekReport extends Component {
     let totalDistance = [];
     let newActivity = [];
     let daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    console.log(activitiesData);
+    // console.log(activitiesData);
     activitiesData.forEach((activity) => {
       var today = new Date(activity.createdAt["seconds"] * 1000);
       var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();

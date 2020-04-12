@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Dashboard from "./Dashboard";
 import { Redirect } from "react-router-dom";
 import { friendAction } from "../store/actions/friendAction";
+import { limitActivityQuery } from "../store/actions/limitActivityQuery";
 class High extends Component {
   componentDidMount() {
     this.props.friendAction(this.props.auth.uid);
