@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
-    console.log("props", props);
+    // console.log("props", props);
     let date = new Date(props.limit);
 
     return [
