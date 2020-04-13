@@ -126,15 +126,27 @@ class TableStat extends Component {
             </tr>
             <tr>
               <th scope="row">Avg Distance / Week</th>
-              {averageStat ? <td>{averageStat.avgDistance.toFixed(2)} Km</td> : <td>loading</td>}
+              {typeof averageStat != "undefined" && typeof averageStat.avgDistance != "undefined" ? (
+                <td>{averageStat.avgDistance.toFixed(2)} Km</td>
+              ) : (
+                <td>loading</td>
+              )}
             </tr>
             <tr>
               <th scope="row">Avg Time / Week</th>
-              {averageStat ? <td>{averageStat.avgTime.toFixed(2)} min</td> : <td>loading</td>}
+              {typeof averageStat != "undefined" && typeof averageStat.avgTime != "undefined" ? (
+                <td>{averageStat.avgTime.toFixed(2)} min</td>
+              ) : (
+                <td>loading</td>
+              )}
             </tr>
             <tr>
               <th scope="row">Total Runs</th>
-              {averageStat ? <td>{averageStat.runPerMonth} runs</td> : <td>loading</td>}
+              {typeof averageStat != "undefined" && typeof averageStat.runPerMonth != "undefined" ? (
+                <td>{averageStat.runPerMonth} runs</td>
+              ) : (
+                <td>loading</td>
+              )}
               <td></td>
             </tr>
             <tr>
@@ -142,10 +154,6 @@ class TableStat extends Component {
                 Estimated Best Efforts
               </th>
               <td></td>
-            </tr>
-            <tr>
-              <th scope="row">1 K</th>
-              <td>4:17 mins</td>
             </tr>
             <tr>
               <th scope="row">Fun Run (5K)</th>

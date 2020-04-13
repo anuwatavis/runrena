@@ -48,6 +48,7 @@ export const signUp = (newUser) => {
             followers: 0,
             following: 0,
             activities: 0,
+            profileUrl: "",
           });
       })
       .then(() => {

@@ -11,12 +11,19 @@ const AtheleteProfile = ({ profile, auth }) => {
           <Col md="12">
             <Link to={"/runner/" + auth.uid}>
               <div className="avatar-flex">
-                <Avatar
-                  name="Anu Wat"
-                  size="100"
-                  round={true}
-                  src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-9/87287930_2748180665269123_8190842520003936256_o.jpg?_nc_cat=105&_nc_sid=09cbfe&_nc_eui2=AeGa4n_O6c0qXTCgeZYbT3UiVyRdgPmVFEhXJF2A-ZUUSIYLMcR-b3FzwjszrG6T25GW55Y2ZwfUfoKSX0iu7AIP&_nc_ohc=hFGW2OFHd3QAX8dSDvt&_nc_ht=scontent.fbkk22-2.fna&oh=4ef687e3eccb2a73a1ae0343546c25ec&oe=5EBA4735"
-                />
+                {typeof profile.profileUrl != "undefined" && profile.profileUrl.length <= 2 ? (
+                  <Avatar className="mb-2" name={profile.firstName + " " + profile.lastName} size="100" round={true} />
+                ) : null}
+
+                {typeof profile.profileUrl != "undefined" && profile.profileUrl.length > 2 ? (
+                  <Avatar
+                    className="mb-2"
+                    name={profile.firstName + " " + profile.lastName}
+                    size="100"
+                    round={true}
+                    src={profile.profileUrl}
+                  />
+                ) : null}
               </div>
             </Link>
           </Col>

@@ -39,19 +39,26 @@ class UserProfile extends Component {
         followData = data;
       }
     });
-    const { profileData } = this.props;
+    const { profileData, profile } = this.props;
     return (
       <div className="container dashboard">
         <Card>
           <Row className="text-center align-items-center">
             <Col>
               <div className="mt-2">
-                <Avatar
-                  name="Anu Wat"
-                  size="70"
-                  round={true}
-                  src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
-                />
+                {profile.profileUrl.length <= 2 ? (
+                  <Avatar className="mb-2" name={profile.firstName + " " + profile.lastName} size="100" round={true} />
+                ) : null}
+
+                {profile.profileUrl.length > 2 ? (
+                  <Avatar
+                    className="mb-2"
+                    name={profile.firstName + " " + profile.lastName}
+                    size="100"
+                    round={true}
+                    src={profile.profileUrl}
+                  />
+                ) : null}
               </div>
               {this.state.followerProfile ? <h5>{followData.firstName}</h5> : null}
               {this.state.followedState && authState ? (

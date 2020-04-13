@@ -3,6 +3,7 @@ import { Card, Row, Col, CardHeader, Input, FormGroup, Button, Form } from "reac
 import { Table } from "reactstrap";
 import { connect } from "react-redux";
 import { profileUpdate } from "../store/actions/profileAction";
+import Avatar from "react-avatar";
 class MyProfile extends Component {
   state = {
     firstName: this.props.profile.firstName,
@@ -11,12 +12,14 @@ class MyProfile extends Component {
     height: this.props.profile.height,
     weight: this.props.profile.weight,
     quote: this.props.profile.quote,
+    profileUrl: this.props.auth.profileUrl,
     nameClicked: false,
     lastNameClicked: false,
     quoteClicked: false,
     weightClicked: false,
     heightClicked: false,
     genderClicked: false,
+    profileClicked: false,
     authId: this.props.auth,
   };
   handleClick = (e) => {
@@ -94,7 +97,23 @@ class MyProfile extends Component {
     this.props.profileUpdate(this.state);
   };
 
+  handelClickProfile = (e) => {
+    this.setState({ profileClicked: true });
+  };
+  handelChangeProfile = (e) => {
+    console.log(e.target.value);
+    this.setState({ profileUrl: e.target.value });
+  };
+
+  handelSubmitProfile = (e) => {
+    e.preventDefault();
+    this.setState({ profileClicked: false });
+    this.props.profileUpdate(this.state);
+  };
+
   render() {
+    const { auth } = this.props;
+    //console.log(auth);
     return (
       <div className="container dashboard">
         <Row>
@@ -107,6 +126,42 @@ class MyProfile extends Component {
             <h2>My Profile</h2>
             <hr />
             <p>Current Photo</p>
+            <Row>
+              <Col md={2}>
+                {auth.profileUrl.length <= 2 ? (
+                  <Avatar className="mb-2" name={auth.firstName + " " + auth.lastName} size="100" round={true} />
+                ) : null}
+
+                {auth.profileUrl.length > 2 ? (
+                  <Avatar
+                    className="mb-2"
+                    name={auth.firstName + " " + auth.lastName}
+                    size="100"
+                    round={true}
+                    src={auth.profileUrl}
+                  />
+                ) : null}
+              </Col>
+              <Col>
+                <i className="icon-pencil2" onClick={this.handelClickProfile}></i>
+                {this.state.profileClicked ? (
+                  <div>
+                    <Form inline onSubmit={this.handelSubmitProfile}>
+                      <FormGroup className="mt-1">
+                        <Input
+                          type="text"
+                          name="lastname"
+                          id="lastname"
+                          placeholder={this.state.profileUrl}
+                          onChange={this.handelChangeProfile}
+                        />
+                      </FormGroup>
+                      <Button className="btn-sm ml-2">Edit</Button>
+                    </Form>
+                  </div>
+                ) : null}
+              </Col>
+            </Row>
             <Table hover>
               <tbody>
                 <tr>
@@ -240,12 +295,6 @@ class MyProfile extends Component {
                   </td>
                 </tr>
                 <tr>
-                  <td>Location</td>
-                  <td>
-                    <h6>null, null</h6>
-                  </td>
-                </tr>
-                <tr>
                   <td>Quote</td>
                   <td>
                     <h6>
@@ -272,16 +321,19 @@ class MyProfile extends Component {
               </tbody>
             </Table>
           </Col>
-          <Col md="2">"Rerena 2020"</Col>
         </Row>
       </div>
     );
   }
 }
-
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.profile,
+  };
+};
 const mapDispatchToProps = (dispatch) => {
   return {
     profileUpdate: (data) => dispatch(profileUpdate(data)),
   };
 };
-export default connect(null, mapDispatchToProps)(MyProfile);
+export default connect(mapStateToProps, mapDispatchToProps)(MyProfile);

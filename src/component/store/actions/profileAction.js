@@ -5,7 +5,7 @@ export const profileUpdate = (data) => {
     const firestore = getFirestore();
     firestore
       .collection("users")
-      .doc(data.authId)
+      .doc(data.authId.userId)
       .update({
         firstName: data.firstName,
         lastName: data.lastName,
@@ -13,6 +13,7 @@ export const profileUpdate = (data) => {
         height: data.height,
         weight: data.weight,
         quote: data.quote,
+        profileUrl: data.profileUrl,
       })
       .then(() => {
         console.log("updateNameDone");
