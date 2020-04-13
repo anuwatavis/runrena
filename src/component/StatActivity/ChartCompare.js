@@ -33,7 +33,6 @@ class ChartCompare extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     this.setState({ activitiesData: nextProps.activities });
   }
   render() {

@@ -15,7 +15,7 @@ import { limitActivityQuery } from "../store/actions/limitActivityQuery";
 import { Col, Row } from "reactstrap";
 
 let sortedActivities;
-let countQuery = 10;
+let countQuery = 0;
 class Dashboard extends Component {
   state = {
     activitiLimit: 5,
@@ -30,8 +30,13 @@ class Dashboard extends Component {
     });
   };
   handelQuery = () => {
-    countQuery = countQuery + 10;
-    this.props.limitQuery(countQuery);
+    let today = new Date();
+    let date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+    let day = new Date(date);
+    countQuery = countQuery + 1;
+    day.setDate(day.getDate() - countQuery);
+    let newday = day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDate();
+    this.props.limitQuery(newday);
   };
 
   render() {
@@ -60,7 +65,6 @@ class Dashboard extends Component {
                 </Col>
               </Row>
             </div>
-
             <div className="col">
               <Information />
             </div>
@@ -75,13 +79,13 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("mapStateToProps -> state", state);
+  console.log(state);
   return {
     friend: state.friend.friend,
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
     users: state.firestore.ordered.users,
-    limit: state.limitQueryReducer.limit,
+    limit: state.limitQueryReducer.today,
   };
 };
 
@@ -94,9 +98,17 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
-    console.log("props dashboard ==>", props);
+    console.log("props", props);
+    let date = new Date(props.limit);
+
     return [
-      { collection: "activities", where: [["userId", "in", props.name]], limit: props.limit },
+      {
+        collection: "activities",
+        where: [
+          ["userId", "in", props.name],
+          ["createdAt", ">", date],
+        ],
+      },
       { collection: "users", where: [["userId", "in", props.name]] },
     ];
   })

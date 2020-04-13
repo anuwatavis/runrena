@@ -1,5 +1,4 @@
 export const getUserActivityByDateAction = (dateTimeAndUserId) => {
-  console.log(dateTimeAndUserId);
   let userId = dateTimeAndUserId[0];
   let from = dateTimeAndUserId[1]["from"];
   let to = dateTimeAndUserId[1]["to"];

@@ -1,13 +1,17 @@
+var today = new Date();
+var date = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
 const initState = {
-  limit: 5,
+  today: date,
 };
 
 const limitQueryReducer = (state = initState, action) => {
   switch (action.type) {
     case "LIMIT_QUERY":
+      console.log("xxxxxx", action.data);
       console.log("LIMIT_QUERY");
       const newState = {
-        limit: action.data,
+        today: action.data,
       };
       return newState;
     case "CREATE_ACTIVITY_ERROR":

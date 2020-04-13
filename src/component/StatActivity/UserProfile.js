@@ -116,7 +116,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     profile: state.firebase.profile,
     auth: state.firebase.auth,
@@ -126,7 +125,6 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => {
-    console.log(props);
     return [{ collection: "users", where: [["userId", "in", [props.followerId]]] }];
   })
 )(UserProfile);

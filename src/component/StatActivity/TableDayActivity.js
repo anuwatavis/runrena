@@ -26,7 +26,7 @@ class TableDayActivity extends Component {
                 return (
                   <tr key={Math.random()}>
                     <td>{activity.titleActivity}</td>
-                    <td>{activity.totalTime}</td>
+                    <td>{activity.totalDistance}</td>
                     <td>{activity.averagePace}</td>
                   </tr>
                 );

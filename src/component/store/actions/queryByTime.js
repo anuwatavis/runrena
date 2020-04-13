@@ -2,7 +2,6 @@ export const queryByTime = (dateTimeAndFriendList) => {
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     let start = new Date(dateTimeAndFriendList[1]);
-    console.log("queryByTime -> start", start);
     var end = new Date(start);
     end.setDate(end.getDate() + 1);
     firestore

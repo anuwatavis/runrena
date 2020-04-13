@@ -112,7 +112,6 @@ class MyStat extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     userId: state.firebase.auth.uid,
     activityUserByDate: state.activityUserByDate.activitiesUserByDate,

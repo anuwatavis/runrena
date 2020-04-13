@@ -4,7 +4,6 @@ const initState = {
 const activityUserByDateReducer = (state = initState, action) => {
   switch (action.type) {
     case "GET_ACTIVITY_USER_BY_DATE":
-      console.log(action);
       const newState = {
         activitiesUserByDate: action.activities,
       };
