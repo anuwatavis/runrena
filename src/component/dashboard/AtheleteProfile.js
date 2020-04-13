@@ -15,7 +15,7 @@ const AtheleteProfile = ({ profile, auth }) => {
                   name="Anu Wat"
                   size="100"
                   round={true}
-                  src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
+                  src="https://scontent.fbkk22-2.fna.fbcdn.net/v/t1.0-9/87287930_2748180665269123_8190842520003936256_o.jpg?_nc_cat=105&_nc_sid=09cbfe&_nc_eui2=AeGa4n_O6c0qXTCgeZYbT3UiVyRdgPmVFEhXJF2A-ZUUSIYLMcR-b3FzwjszrG6T25GW55Y2ZwfUfoKSX0iu7AIP&_nc_ohc=hFGW2OFHd3QAX8dSDvt&_nc_ht=scontent.fbkk22-2.fna&oh=4ef687e3eccb2a73a1ae0343546c25ec&oe=5EBA4735"
                 />
               </div>
             </Link>
