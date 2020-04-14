@@ -46,17 +46,22 @@ class UserProfile extends Component {
           <Row className="text-center align-items-center">
             <Col>
               <div className="mt-2">
-                {profile.profileUrl.length <= 2 ? (
-                  <Avatar className="mb-2" name={profile.firstName + " " + profile.lastName} size="100" round={true} />
-                ) : null}
-
-                {profile.profileUrl.length > 2 ? (
+                {profileData["profileUrl"].length <= 2 ? (
                   <Avatar
                     className="mb-2"
-                    name={profile.firstName + " " + profile.lastName}
+                    name={profileData["firstName"] + " " + profileData["lastName"]}
                     size="100"
                     round={true}
-                    src={profile.profileUrl}
+                  />
+                ) : null}
+
+                {profileData["profileUrl"].length > 2 ? (
+                  <Avatar
+                    className="mb-2"
+                    name={profileData["firstName"] + " " + profileData["lastName"]}
+                    size="100"
+                    round={true}
+                    src={profileData["profileUrl"]}
                   />
                 ) : null}
               </div>
