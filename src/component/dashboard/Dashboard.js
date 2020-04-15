@@ -15,7 +15,7 @@ import { limitActivityQuery } from "../store/actions/limitActivityQuery";
 import { Col, Row } from "reactstrap";
 
 let sortedActivities;
-let countQuery = 0;
+let countQuery = 7;
 class Dashboard extends Component {
   state = {
     activitiLimit: 5,
