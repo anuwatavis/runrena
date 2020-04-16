@@ -87,11 +87,11 @@ class UserProfile extends Component {
                   <div className="font-weight-bold">Follwing</div>
                   <p>{profileData["following"]}</p>
                 </Col>
-                <Col md="4" className="px-0">
+                <Col md="4" xs="12" className="px-0">
                   <div className="font-weight-bold">Activities</div>
                   <p>{profileData["activities"]}</p>
                 </Col>
-                <Col md="12" className="mt-3">
+                <Col md="12" xs="12" className="mt-3">
                   <h5>
                     {this.state.followerProfile ? (
                       <Badge color="dark">

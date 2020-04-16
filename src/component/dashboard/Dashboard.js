@@ -49,11 +49,11 @@ class Dashboard extends Component {
       <div>
         <div className="container dashboard">
           <div className="row">
-            <div className="col">
+            <div className="col-12 col-md-6 col-lg-3">
               <AtheleteProfile />
               <WeekReport />
             </div>
-            <div className="col-6">
+            <div className="col-12 col-md-6 col-lg-6">
               <UploadTest />
               <ActivitiesList activities={sortedActivities} users={users} />
               <Row>

@@ -32,16 +32,18 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
       <Card className="activity feed-entry mt-4">
         <CardBody>
           <Row className="entry header">
-            <Col md="2">
+            <Col md="2" xs="2">
               <Link to={"/runner/" + activity.userId}>
                 <Avatar name={name + " " + initial} size="50" round={true} src={profileUrl} />
               </Link>
             </Col>
-            <Col md="8">
+            <Col md="8" xs="8">
               <div className="entry owner">{name}</div>
               <div className="entry timestamp">{moment(activity.createdAt.toDate()).calendar()}</div>
             </Col>
-            <Col md="2">{deleteState ? <DeletePost activity={activity} /> : null}</Col>
+            <Col md="2" xs="2">
+              {deleteState ? <DeletePost activity={activity} /> : null}
+            </Col>
           </Row>
           <Row className="entry-body">
             <Col md="2" className="d-flex justify-content-center align-self-center">
