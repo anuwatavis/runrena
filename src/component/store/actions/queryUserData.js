@@ -1,5 +1,4 @@
 export const queryUserData = (data) => {
-  console.log("queryUserData -> data", data);
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
     firestore

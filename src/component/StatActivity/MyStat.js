@@ -111,9 +111,9 @@ class MyStat extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
-    userId: state.firebase.auth.uid,
+    userId: props.userId,
     activityUserByDate: state.activityUserByDate.activitiesUserByDate,
   };
 };

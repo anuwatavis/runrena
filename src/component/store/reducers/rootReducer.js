@@ -13,6 +13,7 @@ import queryActivityByWeek from "../reducers/queryActivityByWeek";
 import limitQueryReducer from "../reducers/limitQueryReducer";
 import querySummaryReducer from "../reducers/querySummaryReducer";
 import queryUsersDataReducer from "../reducers/queryUsersDataReducer";
+import eventReducer from "../reducers/eventReducer";
 const rootReducer = combineReducers({
   auth: authReducer, // state from auth reducer
   activities: activityReducer, // activity state
@@ -28,6 +29,7 @@ const rootReducer = combineReducers({
   limitQueryReducer: limitQueryReducer,
   querySummaryReducer: querySummaryReducer,
   queryUsersDataReducer: queryUsersDataReducer,
+  eventReducer: eventReducer,
 });
 
 export default rootReducer;

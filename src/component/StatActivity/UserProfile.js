@@ -92,7 +92,13 @@ class UserProfile extends Component {
                   <p>{profileData["activities"]}</p>
                 </Col>
                 <Col md="12" className="mt-3">
-                  <h5>{this.state.followerProfile ? <Badge color="dark">{followData.quote}</Badge> : null}</h5>
+                  <h5>
+                    {this.state.followerProfile ? (
+                      <Badge color="dark">
+                        <p className="quote-text">{followData.quote}</p>
+                      </Badge>
+                    ) : null}
+                  </h5>
                 </Col>
               </Row>
             </Col>

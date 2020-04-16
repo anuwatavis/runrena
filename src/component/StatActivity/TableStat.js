@@ -44,12 +44,8 @@ class TableStat extends Component {
         min = min + parseInt(array[0]);
         second = second + parseInt(array[1]);
       });
-      console.log("TableStat -> average -> min", min);
-      console.log("TableStat -> average -> second", second);
       min = min + Math.floor(second / 60);
       second = second % 60;
-      console.log("TableStat -> average -> second", second);
-
       let totalTime = min.toString() + "." + second.toString();
       averageStat["Time"] = totalTime;
       averageStat["totalDistance"] = distanceSum;
@@ -59,14 +55,12 @@ class TableStat extends Component {
       averageStat = average(activities);
     }
     if (dataFunRun.length > 0) {
-      console.log("TableStat -> render -> dataFunRun", dataFunRun);
       let min = dataFunRun[0].totalTime;
       for (let i = 1, len = dataFunRun.length; i < len; i++) {
         let v = dataFunRun[i].totalTime;
         min = v < min ? v : min;
       }
       averageStat["bestFunRun"] = min;
-      console.log("TableStat -> render -> min", min);
     }
     if (dataInThisMonth.length > 0) {
       let timeSum = 0;
@@ -83,37 +77,6 @@ class TableStat extends Component {
       averageStat["avgTime"] = timeSum / 4;
       averageStat["runPerMonth"] = monthCount;
     }
-
-    console.log("TableStat -> render -> averageStat", averageStat);
-    // const thisMonthAverage = (dataInthisMonth) => {
-    //   let timeSum = 0;
-    //   let distanceSum = 0;
-    //   dataInthisMonth.forEach((activity) => {
-    //     distanceSum = distanceSum + activity.totalDistance;
-    //     timeSum = timeSum + activity.totalTime;
-    //   });
-    //   averageStat["avgDistance"] = distanceSum / 7;
-    //   averageStat["avgTime"] = timeSum / 7;
-    //   return averageStat;
-    // };
-    // const bestFunRun = (dataFunRun) => {
-    //   if (dataFunRun.length > 0) {
-    //     let min = dataFunRun[0].totalTime;
-    //     for (let i = 1, len = dataFunRun.length; i < len; i++) {
-    //       let v = dataFunRun[i].y;
-    //       min = v < min ? v : min;
-    //     }
-    //     return [min];
-    //   }
-    // };
-    // if (dataFunRun) {
-    //   bestFunRun(dataFunRun);
-    // }
-    // if (activities) {
-    //   averageStat = average(activities);
-    //   averageStat = thisMonthAverage(activities);
-    // }
-
     return (
       <div>
         <Table size="sm">

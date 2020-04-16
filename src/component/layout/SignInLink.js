@@ -6,7 +6,6 @@ import { signOut } from "../store/actions/authAction";
 import SearchBox from "./SearchBox";
 const SignInLink = (props) => {
   const { profile } = props;
-  console.log("profile --> ", profile);
   return (
     <Nav navbar>
       <SearchBox />
@@ -36,6 +35,11 @@ const SignInLink = (props) => {
       <NavItem>
         <NavLink href={"/runner/" + props.auth}>{props.profile.firstName}</NavLink>
       </NavItem>
+      {profile.admin ? (
+        <NavItem>
+          <NavLink href="/admin">Create Event</NavLink>
+        </NavItem>
+      ) : null}
     </Nav>
   );
 };

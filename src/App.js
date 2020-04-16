@@ -8,6 +8,7 @@ import SignIn from "./component/auth/SignIn";
 import SignUp from "./component/auth/SignUp";
 import UserDashbord from "./component/StatActivity/UserDashboard";
 import MyProfile from "./component/MyProfile/MyProfilePage";
+import AdminDashboard from "./component/admin/AdminDashboard";
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/runner/:id" component={UserDashbord} />
           <Route path="/profile/" component={MyProfile} />
+          <Route path="/admin/" component={AdminDashboard} />
         </Switch>
       </BrowserRouter>
     </div>

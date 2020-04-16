@@ -8,6 +8,8 @@ import moment from "moment";
 import DeletePost from "./DeletePost";
 let name = "";
 let deleteState = false;
+let profileUrl = "";
+let initial = "";
 
 const ActivitiesSummary = ({ activity, profile, auth, users }) => {
   if (auth.uid === activity.userId) {
@@ -18,7 +20,9 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
   if (users) {
     users.forEach((user) => {
       if (activity.userId === user.id) {
+        profileUrl = user.profileUrl;
         name = user.firstName;
+        initial = user.lastName;
       }
     });
   }
@@ -30,12 +34,7 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
           <Row className="entry header">
             <Col md="2">
               <Link to={"/runner/" + activity.userId}>
-                <Avatar
-                  name={name}
-                  size="50"
-                  round={true}
-                  // src="https://www.outsideonline.com/sites/default/files/styles/img_600x600/public/2019/05/08/kichoge-winning-london_s.jpg?itok=oiezBvCc"
-                />
+                <Avatar name={name + " " + initial} size="50" round={true} src={profileUrl} />
               </Link>
             </Col>
             <Col md="8">
@@ -46,9 +45,12 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
           </Row>
           <Row className="entry-body">
             <Col md="2" className="d-flex justify-content-center align-self-center">
-              <h2>
-                <i className="icon-tongue2"></i>
-              </h2>
+              <h1 className="display-4">
+                <i class="icon-iconpost">
+                  <span class="path1"></span>
+                  <span class="path2"></span>
+                </i>
+              </h1>
             </Col>
             <Col md="10">
               <Row>

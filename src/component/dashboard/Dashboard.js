@@ -41,7 +41,6 @@ class Dashboard extends Component {
 
   render() {
     const { activities, auth, users, friend } = this.props;
-    //console.log(friend);
     if (!auth.uid) return <Redirect to="/" />; // if don't login and dashboard will go to login
     if (activities) {
       sortedActivities = activities.slice().sort((a, b) => b.createdAt - a.createdAt);
@@ -65,7 +64,7 @@ class Dashboard extends Component {
                 </Col>
               </Row>
             </div>
-            <div className="col">
+            <div className="col information-box">
               <Information />
             </div>
           </div>
@@ -79,7 +78,6 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     friend: state.friend.friend,
     activities: state.firestore.ordered.activities,

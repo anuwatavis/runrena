@@ -4,6 +4,7 @@ import { Table } from "reactstrap";
 import { connect } from "react-redux";
 import { profileUpdate } from "../store/actions/profileAction";
 import Avatar from "react-avatar";
+import { Redirect } from "react-router-dom";
 class MyProfile extends Component {
   state = {
     firstName: this.props.profile.firstName,
@@ -112,8 +113,8 @@ class MyProfile extends Component {
   };
 
   render() {
-    const { auth } = this.props;
-    //console.log(auth);
+    const { auth, authCheck } = this.props;
+    if (!authCheck.uid) return <Redirect to="/" />;
     return (
       <div className="container dashboard">
         <Row>
@@ -131,7 +132,6 @@ class MyProfile extends Component {
                 {auth.profileUrl.length <= 2 ? (
                   <Avatar className="mb-2" name={auth.firstName + " " + auth.lastName} size="100" round={true} />
                 ) : null}
-
                 {auth.profileUrl.length > 2 ? (
                   <Avatar
                     className="mb-2"
@@ -170,7 +170,6 @@ class MyProfile extends Component {
                     <h6>
                       {this.state.firstName} <i className="icon-pencil2" onClick={this.handleClick}></i>
                     </h6>
-
                     {this.state.nameClicked ? (
                       <div>
                         <Form inline onSubmit={this.handelSubmit}>
@@ -310,6 +309,7 @@ class MyProfile extends Component {
                               id="examplePassword"
                               placeholder={this.state.quote}
                               onChange={this.handelChangeQuote}
+                              maxlength="50"
                             />
                           </FormGroup>
                           <Button className="btn-sm ml-2">Edit</Button>
@@ -329,6 +329,7 @@ class MyProfile extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.profile,
+    authCheck: state.firebase.auth,
   };
 };
 const mapDispatchToProps = (dispatch) => {

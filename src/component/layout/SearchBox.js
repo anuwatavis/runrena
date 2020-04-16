@@ -23,7 +23,6 @@ class SearchBox extends React.Component {
   handleChange = (selectedOption) => {
     this.setState({ selectedOption });
     this.setState({ openMenu: false });
-    console.log(`Option selected:`, selectedOption);
     window.location = "/runner/" + selectedOption.value;
   };
   handleInputChange = (query, { action }, selectedOption) => {
@@ -43,8 +42,6 @@ class SearchBox extends React.Component {
       let optionValue = { value: user["userId"], label: user["firstName"] };
       userDataOption.push(optionValue);
     });
-
-    console.log("SearchBox -> render -> userData", userDataOption);
 
     return (
       <Select

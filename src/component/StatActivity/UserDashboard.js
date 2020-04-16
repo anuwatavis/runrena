@@ -15,6 +15,7 @@ class UserDashboard extends Component {
   }
   render() {
     const { followerProfile, activities, auth, followerId, followedStateData, friend } = this.props;
+    if (!auth.uid) return <Redirect to="/" />;
     let followerData;
 
     if (followedStateData !== undefined) {
@@ -41,7 +42,7 @@ class UserDashboard extends Component {
             activities={activities}
           />
         ) : null}
-        {friend ? <Overview friend={friend} /> : null}
+        {friend && auth.uid === followerId ? <Overview friend={friend} /> : null}
         <MyStat activities={activities} userId={followerId} />
       </div>
     );

@@ -1,9 +1,10 @@
 @font-face {
-  font-family: "icomoon";
-  src: url("fonts/icomoon.eot?a8l7vx");
-  src: url("fonts/icomoon.eot?a8l7vx#iefix") format("embedded-opentype"),
-    url("fonts/icomoon.ttf?a8l7vx") format("truetype"), url("fonts/icomoon.woff?a8l7vx") format("woff"),
-    url("fonts/icomoon.svg?a8l7vx#icomoon") format("svg");
+  font-family: 'icomoon';
+  src: url('fonts/icomoon.eot?s9z35a');
+  src: url('fonts/icomoon.eot?s9z35a#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?s9z35a') format('truetype'),
+    url('fonts/icomoon.woff?s9z35a') format('woff'),
+    url('fonts/icomoon.svg?s9z35a#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -11,7 +12,7 @@
 
 i {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: "icomoon" !important;
+  font-family: 'icomoon' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -24,21 +25,37 @@ i {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-delete_forever-24px:before {
-  content: "\e900";
-}
-
 .icon-pencil2:before {
-  content: "\e906";
+  content: "\e905";
 }
 
-.icon-tongue2:before {
-  content: "\e9e4";
+.icon-delete:before {
+  content: "\e904";
 }
 
-.icon-delete_forever-24px:before {
+.icon-iconpost .path1:before {
   content: "\e900";
+  color: rgb(51, 51, 51);
+  opacity: 0.8588;
 }
+
+.icon-iconpost .path2:before {
+  content: "\e901";
+  margin-left: -1em;
+  color: rgb(43, 43, 43);
+}
+
+.icon-logo:before {
+  content: "\e902";
+  color: #bc0f0f;
+}
+
+.icon-logo_1:before {
+  content: "\e903";
+  color: #bc0f0f;
+}
+
+
 
 .searchBox {
   width: 200px;
@@ -188,4 +205,43 @@ i {
   right: 10px;
   border-radius: 5px;
   border: none;
+}
+
+.admin-page {
+  margin-top: 6rem;
+}
+
+.admin-page-information {
+  margin-top: -3rem;
+}
+
+.running-event-title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.running-event-subtitle {
+  font-size: 1rem
+}
+
+.running-event-description {
+  font-size: 0.8rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.running-event-categories {
+  font-size: 0.8rem;
+  color: #e74c3c;
+}
+
+.information-box {
+  margin-top: -2rem;
+}
+
+.quote-text {
+
+  font-family: 'Prompt', sans-serif;
+  font-weight: lighter;
+  margin-bottom: 0;
 }
