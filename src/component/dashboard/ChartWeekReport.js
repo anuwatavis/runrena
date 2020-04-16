@@ -84,8 +84,8 @@ class ChartWeekReport extends Component {
           </CardBody>
           <CardFooter>
             <div className="card-section">
-              <div className="text-label text-small">Latest Activity</div>
-              <div className="text-small">Afternoon Run • March 1, 2020</div>
+              <div className="text-label text-small"></div>
+              <div className="text-small"></div>
             </div>
           </CardFooter>
         </Card>
