@@ -48,9 +48,9 @@ const ActivitiesSummary = ({ activity, profile, auth, users }) => {
           <Row className="entry-body">
             <Col md="2" className="d-flex justify-content-center align-self-center">
               <h1 className="display-4">
-                <i class="icon-iconpost">
-                  <span class="path1"></span>
-                  <span class="path2"></span>
+                <i className="icon-iconpost">
+                  <span className="path1"></span>
+                  <span className="path2"></span>
                 </i>
               </h1>
             </Col>

@@ -44,6 +44,7 @@ class Overview extends Component {
             <Col md="3" className="text-center">
               <div className="mt-2">
                 <DayPickerInput
+                  dateFormat="YYYY-MM-DD"
                   value={selectedDay}
                   onDayChange={this.handleDayChange}
                   dayPickerProps={{

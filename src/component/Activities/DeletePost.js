@@ -17,7 +17,7 @@ const DeletePost = (props) => {
   return (
     <div>
       <Button size="sm" color="danger" onClick={toggle} className="ml-4 rounded-circle">
-        <i class="icon-delete"></i>
+        <i className="icon-delete"></i>
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
         <ModalHeader toggle={toggle}>Delete Post</ModalHeader>
