@@ -245,3 +245,8 @@ i {
   font-weight: lighter;
   margin-bottom: 0;
 }
+
+.text-small-quote {
+  font-size: 11px;
+  font-weight: bold;
+}

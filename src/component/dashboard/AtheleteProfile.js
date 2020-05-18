@@ -61,8 +61,8 @@ const AtheleteProfile = ({ profile, auth }) => {
         </CardBody>
         <CardFooter>
           <div className="card-section">
-            <div className="text-label text-small">Rerena Runner</div>
-            <div className="text-small">{profile.quote}</div>
+            <div className="text-label text-small">Runrena Runner</div>
+            <div className="text-small-quote">{profile.quote}</div>
           </div>
         </CardFooter>
       </Card>
