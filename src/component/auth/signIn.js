@@ -32,7 +32,7 @@ class SignIn extends Component {
             <Input type="password" name="password" id="password" placeholder="Password" onChange={this.handelChange} />
           </FormGroup>
           <Button className="btn-block">Submit</Button>
-          <div>{authError ? <p>{authError}</p> : null}</div>
+          <div className="mt-2">{authError ? <p>{authError}</p> : null}</div>
         </Form>
       </div>
     );

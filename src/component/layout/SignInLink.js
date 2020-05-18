@@ -6,11 +6,13 @@ import { signOut } from "../store/actions/authAction";
 import SearchBox from "./SearchBox";
 const SignInLink = (props) => {
   const { profile } = props;
+  console.log("SignInLink -> profile", profile);
+
   return (
     <Nav navbar>
       <SearchBox />
       <NavItem>
-        <a href={"/runner/" + profile.auth}>
+        <a href={"/runner/" + profile.userId}>
           {!profile["isEmpty"] && profile.profileUrl.length <= 2 ? (
             <Avatar className="mb-2" name={profile.firstName + " " + profile.lastName} size="35" round={true} />
           ) : null}
@@ -27,13 +29,13 @@ const SignInLink = (props) => {
         </a>
       </NavItem>
       <NavItem>
+        <NavLink href={"/runner/" + props.auth}>{props.profile.firstName}</NavLink>
+      </NavItem>
+      <NavItem>
         {/* <a onClick={props.signOut}>Log Out</a> */}
         <NavLink href="/" onClick={props.signOut}>
           Log Out
         </NavLink>
-      </NavItem>
-      <NavItem>
-        <NavLink href={"/runner/" + props.auth}>{props.profile.firstName}</NavLink>
       </NavItem>
       {profile.admin ? (
         <NavItem>
