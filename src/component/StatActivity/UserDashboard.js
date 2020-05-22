@@ -51,12 +51,12 @@ class UserDashboard extends Component {
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.match.params.id;
   return {
-    followerId: userId,
-    followerProfile: state.firestore.ordered.users,
+    followerId: userId, // userId for query data
+    followerProfile: state.firestore.ordered.users, // user profile data
     activities: state.firestore.ordered.activities,
     auth: state.firebase.auth,
     followedStateData: state.firestore.ordered.runrena_friend,
-    friend: state.friend.friend, // frindList of follow
+    friend: state.friend.friend, // frindList of following
   };
 };
 const mapDispatchToProps = (dispatch) => {
@@ -66,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 export default compose(
   firebaseConnect(), // connect to firebase because what to auth uid
-  connect(mapStateToProps, mapDispatchToProps), // map statetoprop
+  connect(mapStateToProps, mapDispatchToProps), // map state to prop
   firestoreConnect((props) => [
     // have props value that get from firebase.auth.uid
     {
